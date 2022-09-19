@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+    <ul class="timeline" *ngFor="let respuesta of respuestas; let i = index">
+      <li *ngIf="i%2==0" >
+        <div class="timeline-badge success">
+          <img class="img-responsive" alt="user" src="assets/images/Captura_logo_gc.PNG" alt="img" />
+        </div>
+        <div class="timeline-panel" style="background-color:white">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">{{respuesta.FECHA}}</h4>
+            <H5> {{respuesta.ACCION}}</H5>
+          
+          </div>
+          <div class="timeline-body">
+            <p>
+             {{respuesta.DETALLE}}
+            </p>
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted"  *ngIf="i%2!=0" >
+        <div class="timeline-badge warning">
+          <img class="img-responsive" alt="user" src="assets/images/Captura_logo_gc.PNG" alt="img" />
+        </div>
+        <div class="timeline-panel" style="background-color:white">
+          <div class="timeline-heading">
+            <h4 class="timeline-title">{{respuesta.FECHA}}</h4>
+            <H5> {{respuesta.ACCION}}</H5>
+          </div>
+          <div class="timeline-body">
+          
+            <p>
+              {{respuesta.DETALLE}}
+            </p>
+          </div>
+        </div>
+      </li>
+
+     
+    </ul>
+  </mat-card-content>
+</mat-card>
+ 

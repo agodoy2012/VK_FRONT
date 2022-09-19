@@ -1,0 +1,83 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <h1>{{parametro}}</h1>
+  </div>
+      <div fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" class="align-items-center">
+          <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+            <mat-form-field>
+              <input matInput class="p-b-0" placeholder="Search here..." [(ngModel)]="searchText" />
+            </mat-form-field>
+          </div>
+          <div fxFlex.gt-md="75" class="text-right">
+         
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <div
+    fxFlex.gt-lg="25"
+    fxFlex.gt-md="33.33"
+    fxFlex.gt-xs="100"
+    fxFlex="100"
+    *ngFor="let contact of contacts | filter: searchText;let i = index"
+  >
+    <mat-card>
+      <mat-card-content class="text-center">
+        <img src="assets/images/users/default.png" class="img-circle border p-5" width="75" />
+        <h4 class="card-title m-t-15 m-b-0">{{ contact.USU_NOMBRE_COMPLETO }}</h4>
+        <div class="m-t-20">
+        <a  [routerLink]="['../../taskboard/','CASOSVK', contact.ID,contact.SISTEMA]"  class="button" style="color:white">
+      
+          <button *ngIf="contact.SISTEMA!='CASOSVK'" mat-raised-button class="m-r-5" color="primary">CASOSVK</button>
+        </a>     
+        <a  [routerLink]="['../../taskboard/','AUTOSTAR', contact.ID,contact.SISTEMA]"  class="button" style="color:white">
+      
+          <button *ngIf="contact.SISTEMA!='AUTOSTAR'" mat-raised-button color="accent">AUTOSTAR</button>
+        </a>   
+          
+        </div>
+        <div class="m-t-20">
+      <a   [routerLink]="['../../taskboard/','CONTRATOS', contact.ID,contact.SISTEMA]"   class="button" style="color:white">
+          <button *ngIf="contact.SISTEMA!='CONTRATOS'" mat-raised-button class="m-r-5"  color="accent">CONTRATOS</button>
+        </a>
+        <a href="../../taskboard/"  class="button" style="color:white">
+          <button mat-raised-button color="primary">CORP</button>
+      </a>
+    </div> 
+ 
+      </mat-card-content>
+      <div fxLayout="row wrap" class="text-center bg-light border-top" *ngIf="parametro != 'General'">
+        <div fxFlex.gt-xs="25" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a [routerLink]="['../../ticketlist', contact.ID,parametros]"  class="link">
+            <i class="fa fa-file m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.CASOS }}
+          </a>
+        </div>
+        <div fxFlex.gt-xs="25" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a  [routerLink]="['../../ticketlist', contact.ID,parametros]" class="link">
+            <i class="fa fa-folder-open m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.ABIERTOS }}
+          </a>
+        </div>
+        <div fxFlex.gt-xs="25" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a [routerLink]="['../../ticketlist', contact.ID,parametros]" class="link"> 
+            <i class="fa fa-archive m-r-10 m-t-0 m-b-5"></i>
+            {{ contact.CERRADOS }}
+          </a>
+        </div>
+        <div fxFlex.gt-xs="25" fxFlex="33.33" class="p-t-10 p-b-10">
+          <a [routerLink]="['../../../dashboards/dashboard2/', contact.ID,parametros]"  class="link">
+            <i class="fa fa-bar-chart m-r-10 m-t-0 m-b-5"></i>
+         
+          </a>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

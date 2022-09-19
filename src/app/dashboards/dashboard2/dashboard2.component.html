@@ -1,0 +1,103 @@
+<!-- ============================================================== -->
+<!-- Card Group Row -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Chart boxes -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+
+<div fxLayout="row wrap"> <!-- tab que se utilizara para seleccionar empresa -->
+
+
+  <!-- Card column -->
+  <div fxFlex.gt-sm="100%" fxFlex="100" >
+
+  
+    <mat-card >
+      <mat-card-content style="justify-content:center;  " fxLayout="row"  >
+       <!--<mat-card-title>Using tabs with a custom label template</mat-card-title>--> <!--habilitar para ponerle titulo-->
+        <mat-tab-group (selectedIndexChange)="tabChange($event)"  fxFlex.gt-sm="100%" fxFlex="100" >
+          <mat-tab>
+            <ng-template mat-tab-label> 
+              Casos VK 
+            </ng-template>
+            <div *ngIf="tabs == 0" >
+            <app-top-card2></app-top-card2>
+                
+                <div >
+                  <!-- Column-->
+                  <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-sales-overview></app-sales-overview>
+                  </div>
+                  <!-- Column-->
+                  <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-visitor></app-visitor>
+                  </div>
+                  
+                  <!-- Column-->
+                </div> 
+
+             </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Autostar
+            </ng-template>
+            <div *ngIf="tabs == 1" >
+            <app-top-card2></app-top-card2> 
+                
+                <div >
+                  <!-- Column-->
+                  <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-sales-overview></app-sales-overview>
+                  </div>
+                  <!-- Column-->
+                  <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-visitor></app-visitor>
+                  </div>
+                  
+                  <!-- Column-->
+                </div>
+ 
+          
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+             
+              Contratos
+            </ng-template>
+            <div *ngIf="tabs == 2" >
+           
+              <app-top-card2></app-top-card2> 
+            <div >
+              <!-- Column-->
+              <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                <app-sales-overview></app-sales-overview>
+              </div>
+              <!-- Column-->
+              <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                <app-visitor></app-visitor>
+              </div>
+              
+              <!-- Column-->
+            </div>
+
+           
+              </div>
+          </mat-tab>
+  
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+
+<!-- ============================================================== -->
+<!-- Image Card row-->
+

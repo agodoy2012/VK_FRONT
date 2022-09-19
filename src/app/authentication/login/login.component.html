@@ -1,0 +1,53 @@
+<div class="login-body">
+  <div class="logo-container">
+      
+    </div>
+  <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+          <div align="center">
+              <img class="login100-form-title"  src="../../../../assets/images/Captura_logo_gc.PNG" style="align-items: center;width: 75px;">
+              <br>
+          </div>
+          <form class="login100-form-title" autocomplete="off"  [formGroup]="miFormulario" (ngSubmit)="login()">
+              
+            <span  style=" text-align: center; width: 100%; display: block;">
+                 Control Integral VK
+        </span>
+        <br>
+        <br>
+        
+        <div class="wrap-input100 m-b-23">
+        
+        <input class="input100"
+        type="text" 
+        formControlName="usuario"
+        placeholder="Ingrese usuario" placeholder="Usuario">
+        <span class="focus-input100" ></span>
+        </div>
+         
+        <div class="wrap-input100">
+        
+        <input class="input100"
+        type="password"
+        formControlName="contrasena"
+        placeholder="Ingrese su contraseña" placeholder="Contraseña">
+        <span class="focus-input100"></span>
+        </div>
+        
+        <div class="text-right p-t-8 p-b-31"></div>
+        
+        <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button class="login100-form-btn" type="submit" [disabled]="miFormulario.invalid ">
+        Login
+        </button>
+        </div>
+        </div>
+        
+        
+        </form>
+      </div>
+  </div>
+</div>
+

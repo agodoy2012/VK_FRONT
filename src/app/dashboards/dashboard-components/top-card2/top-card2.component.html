@@ -1,0 +1,45 @@
+<div class="card-group">
+  <!-- column -->
+
+
+  <!-- column -->
+  <!-- column -->
+
+  <mat-card>
+    <mat-card-content>
+      <!-- column -->
+      <mat-icon class="text-danger">archive</mat-icon>
+      <h3 class="m-0">{{total}}</h3>
+      <h5 class="text-muted m-t-0 m-b-10">CASOS</h5>
+      <mat-progress-bar color="warn" mode="determinate" value="{{casospor}}"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- column --> 
+  <!-- column -->
+
+  <mat-card>
+    <mat-card-content>
+      <!-- column -->
+      <mat-icon class="text-purple">folder_open</mat-icon>
+      <h3 class="m-0">{{abierto}}</h3>
+      <h5 class="text-muted m-t-0 m-b-10">ABIERTOS</h5>
+      <mat-progress-bar color="accent" mode="determinate" value="{{abrpor}}"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- column -->
+  <!-- column -->
+
+  <mat-card>
+    <mat-card-content>
+      <!-- column -->
+      <mat-icon class="text-info">folder_shared</mat-icon>
+      <h3 class="m-0">{{cerrado}}</h3>
+      <h5 class="text-muted m-t-0 m-b-10">CERRADOS</h5>
+      <mat-progress-bar mode="determinate" value="{{cerr}}"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- column -->
+</div>

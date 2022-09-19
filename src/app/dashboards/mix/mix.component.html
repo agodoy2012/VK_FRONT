@@ -1,0 +1,65 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <mat-card-title>USUARIOS</mat-card-title>
+        <div class="bg-light p-10 p-r-20 p-l-20">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+          </mat-form-field>
+        </div>
+        <div class="responsive-table">
+          <mat-table [dataSource]="dataSource" matSort>
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+              <mat-cell *matCellDef="let row">{{ row.ID }}</mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Sistema">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Casos </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{ row.CASOS }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Nombre">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{ row.USU_NOMBRE_COMPLETO }} </mat-cell>
+            </ng-container>
+
+
+
+
+            <ng-container matColumnDef="Casos">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Abiertos </mat-header-cell>
+              <mat-cell *matCellDef="let row">  {{ row.ABIERTOS }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Casosb">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Cerrados </mat-header-cell>
+              <mat-cell *matCellDef="let row">  {{ row.CERRADOS }} </mat-cell>
+            </ng-container> 
+            <ng-container matColumnDef="Link">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+              <mat-cell *matCellDef="let row">    <a [routerLink]="['../../apps/ticketlist', row.ID]"><i class="fa fa-search"></i
+              ></a>- -<p>  </p><a  class="m-r-10 " [routerLink]="['../../dashboards/dashboard2/', row.ID,tab]" 
+              ><i class="fa fa-bar-chart"></i
+            ></a> </mat-cell>
+            </ng-container> 
+ 
+            <!-- Name Column --> 
+      
+            <!-- Color Column -->
+       
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+          </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+

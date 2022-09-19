@@ -1,0 +1,241 @@
+<div fxLayout="row wrap"> 
+
+  <div fxFlex.gt-sm="100%" fxFlex="100" >
+
+
+    <mat-card >
+      <mat-card-content style="justify-content:center;  " fxLayout="row" fxLayout="center" >
+
+
+
+<mat-tab-group (selectedIndexChange)="tabChange($event)" fxFlex.gt-sm="100%" fxFlex="100" >
+  <mat-tab label="Casos VK" >
+        <ng-template ></ng-template>
+  
+    <div *ngIf="tabs == 0" >
+      <app-top-card></app-top-card> 
+   <div > 
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+      <app-sales-overview></app-sales-overview>
+    </div>
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+      <app-visitor ></app-visitor>
+    </div>
+    
+    <!-- Column--> 
+  </div>
+
+  <div  >
+    <app-mix></app-mix>
+    </div>
+  </div>
+
+</mat-tab>
+  <mat-tab label="AUTOSTAR" > 
+    
+    <ng-template ></ng-template>
+  
+    <div *ngIf="tabs == 1" >
+      <app-top-card></app-top-card> 
+   <div > 
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" >
+      <app-sales-overview  ></app-sales-overview>
+    </div>
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+      <app-visitor ></app-visitor>
+    </div>
+    
+    <!-- Column-->
+  </div>
+
+  <div  >
+    <app-mix></app-mix>
+    </div>
+  </div>
+  </mat-tab>
+
+
+
+
+  <mat-tab label="CONTRATOS">  
+    <ng-template ></ng-template>
+  
+    <div *ngIf="tabs == 2" >
+      <app-top-card></app-top-card> 
+   <div > 
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" >
+      <app-sales-overview  ></app-sales-overview>
+    </div>
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+      <app-visitor ></app-visitor>
+    </div>
+    
+    <!-- Column-->
+  </div>
+
+  <div  >
+    <app-mix></app-mix>
+    </div>
+  </div></mat-tab>
+
+
+
+  <mat-tab label="CORPORATIVO">   
+    <ng-template ></ng-template>
+  
+    <div *ngIf="tabs == 3" >
+      <app-top-card></app-top-card> 
+   <div > 
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" >
+      <app-sales-overview  ></app-sales-overview>
+    </div>
+    <!-- Column-->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+      <app-visitor ></app-visitor>
+    </div>
+    
+    <!-- Column-->
+  </div>
+
+  <div  >
+    <app-mix></app-mix> 
+    </div>
+  </div></mat-tab>
+</mat-tab-group>
+
+</mat-card-content>
+</mat-card>
+</div>
+</div>
+
+
+
+
+
+
+
+<!--<div fxLayout="row wrap"> 
+
+  <div fxFlex.gt-sm="100%" fxFlex="100" >
+
+
+    <mat-card >
+      <mat-card-content style="justify-content:center;  " fxLayout="row" fxLayout="center" >
+     
+        <mat-tab-group  fxFlex.gt-sm="100%" fxFlex="100" >
+          <mat-tab  (click)="vKconsulta()">
+            <ng-template mat-tab-label  (click)="vKconsulta()">
+             <span (click)="vKconsulta">Casos VK</span> 
+            </ng-template>
+            
+                 <app-top-card></app-top-card> 
+                
+                <div >
+                
+                  <div fxFlex.gt-lg="75" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-sales-overview></app-sales-overview>
+                  </div>
+                 
+                  <div fxFlex.gt-lg="25" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-visitor></app-visitor>
+                  </div>
+                  
+                 
+                </div>
+
+                <div >
+                  <app-mix></app-mix>
+                  </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Autostar
+            </ng-template>
+            <app-top-card></app-top-card> 
+                
+                <div >
+                
+                  <div fxFlex.gt-lg="75" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                    <app-sales-overview></app-sales-overview>
+                  </div>
+                 
+                  <div fxFlex.gt-lg="25" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                 
+                  </div>
+                  
+                
+                </div>
+
+                <div >
+                  <app-mix></app-mix>
+                  </div> 
+            <app-top-card></app-top-card>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+             
+              Contratos
+            </ng-template>
+            <app-top-card></app-top-card> 
+                
+            <div >
+              
+              <div fxFlex.gt-lg="75" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                <app-sales-overview></app-sales-overview>
+              </div>
+             
+              <div fxFlex.gt-lg="25" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+               
+              </div>
+              
+             
+            </div>
+
+            <div >
+              <app-mix></app-mix>
+              </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+             
+              Corporativo
+            </ng-template>
+            <app-top-card></app-top-card> 
+                
+            <div >
+           
+              <div fxFlex.gt-lg="75" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+                <app-sales-overview></app-sales-overview>
+              </div>
+             
+              <div fxFlex.gt-lg="25" fxFlex.gt-md="40" fxFlex.gt-xs="100" fxFlex="100">
+                <app-visitor></app-visitor>
+              </div>
+              
+             
+            </div>
+
+            <div >
+              <app-mix></app-mix>
+              </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+
+ ============================================================== -->
+<!-- Image Card row-->
+

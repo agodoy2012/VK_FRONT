@@ -1,0 +1,116 @@
+<div fxLayout="row wrap" >
+  <!-- column -->
+  <div fxFlex.gt-sm="33" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div class="box p-20 bg-info text-center cursor-pointer" (click)="btnCategoryClick('')">
+        <h1 class="font-light text-white m-0">{{ totalCount }}</h1>
+        <h6 class="text-white m-0">Casos</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+  <div fxFlex.gt-sm="33" fxFlex.gt-xs="100" fxFlex="100"> 
+    <mat-card>
+      <div
+        class="box p-20 bg-warning text-center cursor-pointer"
+        (click)="btnCategoryClick('abierto')"
+      >
+        <h1 class="font-light text-white m-0">{{ Open }}</h1>
+        <h6 class="text-white m-0">Abiertos</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+  <div fxFlex.gt-sm="33" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <div
+        class="box p-20 bg-success text-center cursor-pointer"
+        (click)="btnCategoryClick('cerrado')"
+      >
+        <h1 class="font-light text-white m-0">{{ Closed }}</h1>
+        <h6 class="text-white m-0">Cerrados</h6>
+      </div>
+    </mat-card>
+  </div>
+  <!-- column -->
+  <!-- column -->
+
+  <!-- column -->
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row wrap" class="align-items-center">
+          <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
+            <mat-form-field>
+              <input
+                matInput
+                (keyup)="applyFilter($event.target.value)"
+                placeholder="Buscar Caso"
+              />
+            </mat-form-field>
+          </div>
+         
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <div fxFlex="auto">
+    <mat-card> 
+      <mat-card-content>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource" class="table ticket-list no-wrap">
+        
+            <ng-container matColumnDef="title">
+              <th mat-header-cell *matHeaderCellDef>ID</th>
+              <td mat-cell *matCellDef="let element">{{ element.ID }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="assignee" style="width: 10%;">
+              <th mat-header-cell *matHeaderCellDef>Cliente</th>
+              <td mat-cell *matCellDef="let element" style="width:15%">{{ element.CLIENTE }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Estado</th>
+              <td mat-cell *matCellDef="let element">{{ element.ESTADO }}</td>
+            </ng-container> 
+
+            <ng-container matColumnDef="product">
+              <th mat-header-cell *matHeaderCellDef>Contrato</th>
+              <td mat-cell *matCellDef="let element">{{ element.TITULO }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Fecha</th> 
+              <td mat-cell *matCellDef="let element">{{ element.FECHA }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Buscar</th>
+              <td mat-cell *matCellDef="let element">
+    
+                <a *ngIf="tabnomb" class="m-r-10 " [routerLink]="['../../../../pages/timeline/', element.ID]" 
+                  ><i class="fa fa-search"></i
+                ></a>
+
+                <a *ngIf="!tabnomb" class="m-r-10 " [routerLink]="['../../../pages/timeline/', element.ID]" 
+                ><i class="fa fa-search"></i
+              ></a>
+             
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
