@@ -17,13 +17,13 @@
   <!-- ============================================================== -->
   <!-- Topbar - style you can find in header.scss -->
   <!-- ============================================================== -->
-  <mat-toolbar style="background-color:white" class="topbar relative">
+  <mat-toolbar style="background-color:white; justify-content: center;" class="topbar relative" >
     <div class="w-100 fix-width-for-horizontal">
       <!-- ============================================================== -->
       <!-- Logo - style you can find in header.scss -->
       <!-- ============================================================== -->
       <div class="navbar-header">  <!-- el logo que esta por arriba de la barra de menu-->
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand"(click)="snav.toggle()">
           <!-- Logo icon -->
           <b>
             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -36,19 +36,21 @@
           <!-- Logo text -->
           <span fxShow="false" fxShow.gt-xs>
             <!-- dark Logo text -->
-            <img src="assets/images/VKLargo1.png" alt="homepage" class="dark-logo" width="225" />
+            <img src="assets/images/VKLargo1.png" alt="homepage" class="dark-logo" width="200" />
             <!-- Light Logo text -->
-            <img src="assets/images/VKLargo1.png" class="light-logo" alt="homepage"  width="225" height="auto" />
+            <img src="assets/images/VKLargo1.png" class="light-logo" alt="homepage"  width="200" />
           </span>
         </a>
       </div>
       <!-- ============================================================== -->
       <!-- sidebar toggle -->
       <!-- ============================================================== -->
-
-      <button mat-icon-button (click)="snav.toggle()" class="sidebar-toggle" value="sidebarclosed" >
-        <mat-icon style="background-color:black">menu</mat-icon>
+       
+    <!--  <button mat-icon-button (click)="snav.toggle()" class="sidebar-toggle" value="sidebarclosed"  >  para colocar la barra del menu con lineas 
+        <mat-icon style="background-color:black;vertical-align: middle; display:flex;             
+        align-self:center;">menu</mat-icon>
       </button>
+    -->
       <span class="spacer"></span>
       <button mat-button  (click)="logout()" style="background-color:black">
           Logout
