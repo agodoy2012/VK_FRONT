@@ -34,7 +34,7 @@ export interface VisitorChartOptions {
   legend: ApexLegend;
   colors: string[];
   stroke: any;
-  
+
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
 }
@@ -86,13 +86,20 @@ export class VisitorComponent implements OnInit  {
     else{
       
      this.updateSeries(); // metodo para hacer el despliegue de informacion de la empresa 
-    }
+    } 
  
     
     this.VisitorChartOptions = { //propiedades de la grafica 
       
       series:this.datos,
       chart: {
+        events:{
+          click:(evt, activeEls) => { 
+            
+            console.log(evt)
+            console.log(evt.path[1].attributes.seriesName.nodeValue)
+          }
+        },
         type: 'donut',
         fontFamily: 'Poppins,sans-serif',
         height: 253,  
@@ -129,6 +136,7 @@ export class VisitorComponent implements OnInit  {
       stroke: {
         width: 0,
       },
+      
       legend: {
         formatter: function(label, opts) {
           return label + " - " + opts.w.globals.series[opts.seriesIndex]
@@ -139,6 +147,7 @@ export class VisitorComponent implements OnInit  {
         },
         
       },
+    
       labels: ['SIN DATOS'],
       colors: ['#1e88e5', '#26c6da', '#745af2', '#eceff1','#32CD32','#FFFF00','#FF4500','#FF00FF','#0000FF','#304758'],
       
@@ -423,3 +432,8 @@ export class VisitorComponent implements OnInit  {
 
 
 } 
+
+function pad(arg0: any, arg1: number) {
+  throw new Error('Function not implemented.');
+}
+

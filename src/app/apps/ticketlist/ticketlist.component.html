@@ -14,10 +14,10 @@
     <mat-card>
       <div
         class="box p-20 bg-warning text-center cursor-pointer"
-        (click)="btnCategoryClick('abierto')"
+        (click)="btnCategoryClick(nombre1)"
       >
         <h1 class="font-light text-white m-0">{{ Open }}</h1>
-        <h6 class="text-white m-0">Abiertos</h6>
+        <h6 class="text-white m-0">{{ nombre1 }}</h6>
       </div>
     </mat-card>
   </div>
@@ -27,10 +27,10 @@
     <mat-card>
       <div
         class="box p-20 bg-success text-center cursor-pointer"
-        (click)="btnCategoryClick('cerrado')"
+        (click)="btnCategoryClick(nombre2)"
       >
         <h1 class="font-light text-white m-0">{{ Closed }}</h1>
-        <h6 class="text-white m-0">Cerrados</h6>
+        <h6 class="text-white m-0">{{ nombre2 }}</h6>
       </div>
     </mat-card>
   </div>
@@ -91,7 +91,7 @@
               <td mat-cell *matCellDef="let element">{{ element.FECHA }}</td>
             </ng-container>
 
-            <ng-container matColumnDef="action">
+            <ng-container matColumnDef="action" *ngIf="parametro>0; ">
               <th mat-header-cell *matHeaderCellDef>Buscar</th>
               <td mat-cell *matCellDef="let element">
     
@@ -105,6 +105,18 @@
              
               </td>
             </ng-container>
+           
+
+            <ng-container matColumnDef="action" *ngIf="parametro==0 ">
+              <th mat-header-cell *matHeaderCellDef>USUARIO</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.USUARIO }} 
+              </td>
+            </ng-container>
+
+
+
+
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

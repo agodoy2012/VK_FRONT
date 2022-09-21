@@ -19,6 +19,7 @@ import { AuthService } from 'src/app/AUTH/services/auth.service';
 import { Data } from '@angular/router';
 import { timeout } from 'rxjs/operators';
 import { XAxisComponent } from '@swimlane/ngx-charts';
+import { label } from '../../../apps/mailbox/listing/categories';
 
 export interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -49,7 +50,7 @@ export interface ChartOptions {
 
 
 
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions: Partial<ChartOptions>; 
   
   idvk!: string;
   idautostar!: string;
@@ -106,6 +107,17 @@ export interface ChartOptions {
         }
       ],
       chart: {
+        events:{
+          click:(evt, activeEls, otros) => {
+    
+             /// para ver el evento completo console.log(evt)
+         // para saber que tipo es    console.log(evt.path[1].attributes.seriesName.nodeValue)
+      
+         //para saber en que label esta    console.log(otros.globals.labels[otros.dataPointIndex])
+        
+      
+          }
+        },
         type: 'bar',
         fontFamily: 'Poppins,sans-serif',
         height: 347,
@@ -123,6 +135,7 @@ export interface ChartOptions {
       dataLabels: {
         enabled: false,
       },
+    
       stroke: {
         show: true,
         width: 2,
@@ -130,6 +143,7 @@ export interface ChartOptions {
       },
       xaxis: {
         categories: [this.mes1,this.mes2, this.mes3, this.mes4, this.mes5, this.mes6],
+        
       },
 
       legend: {
@@ -143,6 +157,9 @@ export interface ChartOptions {
         theme: 'dark',
       },
     };
+  }
+  getElementAtEvent(evt: any) {
+    throw new Error('Method not implemented.');
   }
 
   mes1 = "";

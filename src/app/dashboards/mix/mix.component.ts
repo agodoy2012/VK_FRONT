@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/AUTH/services/auth.service';
 import { casosVK } from 'src/app/AUTH/interfaces/interfaces';
+import { TotalTrabajo } from '../../AUTH/interfaces/interfaces';
 
 /** Constants used to fill up our data base. */
 const COLORS = [
@@ -66,6 +67,8 @@ export class MixComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort = Object.create(null);
 
   respuestas:casosVK[] = [];
+  trabajo: number = 0;
+  sintrab: number = 0; 
    tab = localStorage.getItem('tab');
   constructor(breakpointObserver: BreakpointObserver, private authservice: AuthService) {
     
@@ -109,9 +112,20 @@ export class MixComponent implements AfterViewInit {
    
     switch(this.tab){
       case 'Casos VK': 
+
+      
+
       this.authservice.CasosUsuariosVK()
       .subscribe(resp=>{
         this.respuestas = resp;
+       
+      });
+
+
+      this.authservice.ContrabajoVK()
+      .subscribe(resp=>{
+        this.trabajo = resp[0].CON_TRABAJO;
+        this.sintrab = resp[0].SIN_TRABAJO;
        
       });
   
@@ -122,7 +136,12 @@ export class MixComponent implements AfterViewInit {
           this.respuestas = resp;
         
         });
-    
+        this.authservice.contrabajoAutostar()
+        .subscribe(resp=>{
+          this.trabajo = resp[0].CON_TRABAJO;
+          this.sintrab = resp[0].SIN_TRABAJO;
+         
+        });
         break;
        case 'Contratos':
         this.authservice.CasosUsuariosCONTRATOS()
@@ -130,7 +149,12 @@ export class MixComponent implements AfterViewInit {
           this.respuestas = resp;
     
         });
-    
+        this.authservice.contrabajoContratos()
+        .subscribe(resp=>{
+          this.trabajo = resp[0].CON_TRABAJO;
+          this.sintrab = resp[0].SIN_TRABAJO;
+         
+        });
         break;
     }
 

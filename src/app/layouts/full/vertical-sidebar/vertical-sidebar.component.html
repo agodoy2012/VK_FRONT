@@ -2,29 +2,24 @@
 <!-- ============================================================== -->
 <!-- sidebar -->
 <!-- ============================================================== -->
-<div class="user-profile" style="background: url(assets/images/pexels-pixabay-159832.jpg) no-repeat; width:auto;
+<div class="user-profile" style="background: url(assets/images/laptop-and-mallet-on-table.jpg) no-repeat; width:auto;
 height:150px; background-size:cover;
   background-position:center;">
   <!-- User profile image -->
   <div class="profile-img"  fxLayout="row" fxLayout="center" >
-    <img src="assets/images/VKlogo.png" alt="user" (click)="handleNotify()" />
+    <img src="assets/images/VKlogo.png" alt="user" (click)="handleNotify()" style="background-color:white"/>
   </div>
   <!-- User profile text-->
   <!-- ============================================================== -->
   <!-- Profile - style you can find in header.scss -->
   <!-- ============================================================== -->
   <div class="profile-text">
-    <a [matMenuTriggerFor]="sdprofile" class="d-flex align-items-center">
+    <a  class="d-flex align-items-center">
       {{nombrecompleto}}
-      <i class="ti-angle-down font-12 ml-auto"></i>
+
     </a>
   </div>
-  <mat-menu #sdprofile="matMenu" class="mymegamenu">
-   <!-- <button mat-menu-item><mat-icon>settings</mat-icon> Settings</button> --> 
-    <button mat-menu-item><mat-icon>account_box</mat-icon> Profile</button>
-   
-    <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Sign Out</button>
-  </mat-menu>
+
 </div>
 
 <mat-nav-list appAccordion>

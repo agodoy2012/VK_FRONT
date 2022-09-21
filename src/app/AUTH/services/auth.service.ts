@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse } from '../interfaces/interfaces';
+import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse, TotalTrabajo, TotalVencido, vensin } from '../interfaces/interfaces';
 import { Data } from '@angular/router';
 import { async } from '@angular/core/testing';
 import { HttpHeaders } from '@angular/common/http';
@@ -504,6 +504,128 @@ login(usuario:string, contrasenna: string){
   return    this.http.post<AuthResponse[]>(url,body);
    }
    ///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /////////////////////////////// funcion para buscar cuantos estan con y sin trabajo ///////////////////////////////////////
+
+   ContrabajoVK(){
+    const url = `${ this.link }cantidadTrabajoActualCasos`;
+    return    this.http.get<TotalTrabajo[]>(url);
+
+  }
+  contrabajoAutostar(){
+    const url = `${ this.link }cantidadTrabajoActualAutostar`;
+    return    this.http.get<TotalTrabajo[]>(url);
+
+  }
+  contrabajoContratos(){
+    const url = `${ this.link }cantidadTrabajoActualContratos`;
+    return    this.http.get<TotalTrabajo[]>(url);
+
+  }
+
+
+
+
+
+
+
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+   /////////////////////////////// funcion para cunatos activos estan vencidos y cuantos estan sin vencer ////////////////////
+   VencidosVK(){
+    const url = `${ this.link }vencidosCasos`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+ PorvencerVK(){
+    const url = `${ this.link }porVencerCasos`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+  VencidosAutostar(){
+    const url = `${ this.link }vencidosAutostar`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+ PorvencerAutostar(){
+    const url = `${ this.link }porVencerAutostar`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+  VencidosContratos(){
+    const url = `${ this.link }vencidosContratos`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+ PorvencerContratos(){
+    const url = `${ this.link }porVencerContratos`;
+    return    this.http.get<TotalVencido[]>(url);
+
+  }
+
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+/////////////////////////////////////////////////// listado de casos vencidos y por vencer //////////////////////////////////////
+
+
+vensinVK(){
+  const url = `${ this.link }casosActivosEstadoCasos`;
+  return    this.http.get<vensin[]>(url);
+
+}
+vensinAutostar(){
+  const url = `${ this.link }casosActivosEstadoAutostar`;
+  return    this.http.get<vensin[]>(url);
+
+}
+vensinContratos(){
+  const url = `${ this.link }casosActivosEstadoContratos`;
+  return    this.http.get<vensin[]>(url);
+
+}
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
  

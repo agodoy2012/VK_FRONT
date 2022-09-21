@@ -69,3 +69,22 @@ export interface AuthResponse{
     USU_CODIGO: number,
    USU_NOMBRE_COMPLETO: string,
  }
+
+
+ export interface TotalVencido{
+    CASOS: number,
+ }
+ 
+ export interface TotalTrabajo{
+    SIN_TRABAJO: number,
+    CON_TRABAJO: number,
+ }
+
+ export interface vensin{
+    ID: number,
+    CLIENTE: string,
+    ESTADO: string,
+    TITULO: string,
+    FECHA: string,
+    USUARIO: string
+ }

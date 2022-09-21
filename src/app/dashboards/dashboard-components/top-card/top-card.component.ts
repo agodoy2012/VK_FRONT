@@ -23,7 +23,28 @@ export class TopCardComponent implements OnInit  {
           this.cerrado = resp[0].CERRADOS?.toString();
            
       
-        })
+        });
+
+        this.authservice.VencidosVK()//verifica de los activos cuales etan vencidos
+        .subscribe(resp=>{
+          
+          this.vencido = resp[0].CASOS?.toString();
+        });
+        this.authservice.PorvencerVK()//de los activos muestra cuantos aun no vencen
+        .subscribe(resp=>{
+         
+          this.tiempo = resp[0].CASOS?.toString();
+      
+        });
+
+
+
+
+
+
+
+
+
       break
         case 'Autostar':
           this.authservice.CasosActualesAutos()// se lee la variable local para ver en que tab esta 
@@ -32,7 +53,19 @@ export class TopCardComponent implements OnInit  {
              this.abierto = resp[0].ABIERTOS?.toString();
              this.cerrado = resp[0].CERRADOS?.toString();
         
-          })
+          });
+          this.authservice.VencidosAutostar()//verifica de los activos cuales etan vencidos
+        .subscribe(resp=>{
+          
+          this.vencido = resp[0].CASOS?.toString();
+        });
+        this.authservice.PorvencerAutostar()//de los activos muestra cuantos aun no vencen
+        .subscribe(resp=>{
+        
+          this.tiempo = resp[0].CASOS?.toString();
+      
+        });
+ 
         break;
 
 
@@ -44,7 +77,19 @@ export class TopCardComponent implements OnInit  {
             this.cerrado = resp[0].CERRADOS?.toString();
            
         
-          })
+          });
+          this.authservice.VencidosContratos()//verifica de los activos cuales etan vencidos
+        .subscribe(resp=>{
+        
+          this.vencido = resp[0].CASOS?.toString();
+        });
+        this.authservice.PorvencerContratos()//de los activos muestra cuantos aun no vencen
+        .subscribe(resp=>{
+       
+          this.tiempo = resp[0].CASOS?.toString();
+      
+        });
+
           break;
 
           case 'CORPORATIVO':
@@ -59,6 +104,8 @@ export class TopCardComponent implements OnInit  {
    total: any  = 0  ; // se declaran las variables que se mostraran 
    abierto: any = 0;
    cerrado: any = 0;   
+   vencido: any = 0 ; 
+   tiempo: any = 0 ; 
 
 
   ngOnInit(): void {

@@ -9,7 +9,7 @@ import { MatSort } from '@angular/material/sort';
 
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/AUTH/services/auth.service';
-import { casosVK } from 'src/app/AUTH/interfaces/interfaces';
+import { casosVK, vensin } from 'src/app/AUTH/interfaces/interfaces';
 import { tick } from '@angular/core/testing';
 import { switchMap, tap } from 'rxjs/operators';
 
@@ -78,9 +78,11 @@ export class TicketlistComponent implements OnInit {
   ];
 
 
-
-
+  valores!: string;
+  nombre1!: string;
+  nombre2!: string;
   respuestas:casosVK[] = [];
+  respuestasven: vensin[] = [];
   parametro!: number ;
   tabnomb!: string;
   dataSource = new MatTableDataSource(this.respuestas);
@@ -90,9 +92,7 @@ export class TicketlistComponent implements OnInit {
 
 /// se le asigna el total de datos que va  estar en cada una de las etiquetas 
     
-    this.totalCount = this.dataSource.data.length;
-    this.Closed = this.btnCategoryClick('CERRADO');
-    this.Open = this.btnCategoryClick('ABIERTO');
+
  
 
     ///// se leee los parametros que vienen en el link
@@ -102,33 +102,27 @@ export class TicketlistComponent implements OnInit {
      
       this.parametro = params.id;
       this.tabnomb = params.tab;
-      if(params.tab){
-      
-      }
-      else
-      { 
- 
-      }
+    
       
     });
 
-    this.update();
+    if(this.parametro > 0){
+      this.nombre1 = "ABIERTO";
+      this.nombre2 = "CERRADO";
+      this.update();
+    }
+    else{
+      this.nombre1 = "POR VENCER";
+      this.nombre2 = "VENCIDO";
+      this.vencidos();
+    }
     
 /// se toma una pausa y se asignan los valores que se obtuvieron en la peticon
-    setTimeout(() => {
+ 
 
-      this.dataSource = new MatTableDataSource(this.respuestas);
-      this.totalCount = this.dataSource.data.length;
-      this.Closed = this.btnCategoryClick('CERRADO');
-      this.Open = this.btnCategoryClick('ABIERTO');
-      this.dataSource = new MatTableDataSource(this.respuestas);
-  }, 1000);
-
-    
-
-    this.dataSource = new MatTableDataSource(this.respuestas);
-
-
+this.totalCount = this.dataSource.data.length;
+this.Closed = this.btnCategoryClick(`${this.nombre2}`);
+this.Open = this.btnCategoryClick(`${this.nombre1}`);
 
    }
  
@@ -137,34 +131,49 @@ export class TicketlistComponent implements OnInit {
 
     //// se realiza el mismo procedimiento que en el constructor 
 
-    this.totalCount = this.dataSource.data.length;
-    this.Closed = this.btnCategoryClick('CERRADO');
-    this.Open = this.btnCategoryClick('ABIERTO');
 
     this.activatedRoute.params
    
-    .subscribe( params =>{
+    .subscribe( params =>{ 
       
       this.parametro = params.id;
       if(params.tab){
   
-      }
-      else
-      {
- 
-      }
+      } 
+     
       
     });
 
-    this.update();
+   
+    if(this.parametro > 0){
+      this.nombre1 = "ABIERTO";
+      this.nombre2 = "CERRADO";
+      this.update();
+    }
+    else{
+      this.nombre1 = "POR VENCER";
+      this.nombre2 = "VENCIDO";
+     this.vencidos();
+
+     setTimeout(() => {
+      this.respuestas = this.respuestasven;
+     
+     }, 250);
+ 
+    
+
+    }
+   
     
 
     setTimeout(() => {
 
+
+
       this.dataSource = new MatTableDataSource(this.respuestas);
       this.totalCount = this.dataSource.data.length;
-      this.Closed = this.btnCategoryClick('CERRADO');
-      this.Open = this.btnCategoryClick('ABIERTO');
+      this.Closed = this.btnCategoryClick(`${this.nombre2}`);
+      this.Open = this.btnCategoryClick(`${this.nombre1}`);
       this.dataSource = new MatTableDataSource(this.respuestas);
   }, 1000);
 
@@ -190,7 +199,7 @@ export class TicketlistComponent implements OnInit {
       .subscribe(resp=>{
         this.respuestas = resp;
        
-      });
+      }); 
       break
 
 
@@ -217,12 +226,57 @@ export class TicketlistComponent implements OnInit {
 
   }
 
+
+  vencidos(){
+ 
+
+    
+    const tab = localStorage.getItem('tab');
+   ///// se realiza un switch para saber de que tab se esta haciendo la busqueda para buscar en esa empresa en particular 
+    switch(tab){
+      case 'Casos VK': 
+      this.authservice.vensinVK()
+      .subscribe(resp=>{
+        this.respuestasven = resp;
+   
+      }); 
+      break
+
+
+      case 'Autostar':
+        this.authservice.vensinAutostar()
+        .subscribe(resp=>{
+          this.respuestasven = resp;
+       
+        });
+        break;
+        case 'Contratos':
+          this.authservice.vensinContratos()
+          .subscribe(resp=>{
+            this.respuestasven = resp;
+           
+          });
+        break
+
+    }
+   
+  
+
+
+
+  }
+
   applyFilter(filterValue: string): void {
+  
+
+    
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  
   }
 
   btnCategoryClick(val: string): number {
     this.dataSource.filter = val.trim().toLowerCase();
+
     return this.dataSource.filteredData.length;
   }
 
@@ -234,7 +288,7 @@ export class TicketlistComponent implements OnInit {
 
 
   // tslint:disable-next-line - Disables all
- 
+  
 }
 
 @Component({
