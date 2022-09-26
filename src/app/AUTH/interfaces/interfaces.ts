@@ -35,7 +35,9 @@ export interface casosVK{
     USU_NOMBRE_COMPLETO?: string,
     CASOS?: number,
     ABIERTOS?: number,
-    CERRADOS?: number
+    CERRADOS?: number,
+    VENCIDOS?: number,
+    POR_VENCER?: number
 }
 
 

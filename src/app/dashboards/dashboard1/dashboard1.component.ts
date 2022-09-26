@@ -83,14 +83,21 @@ ngOnInit(): void {
  
 
 
-
+ 
 
 setTimeout(() => {
  
 
   if (this.vencido != "0"){
 
-    Swal.fire(`Verificar casos activos vencidos en: ${this.vencido}--${this.vencidoauto}--${this.vencidocontra}`)
+    Swal.fire(
+      { 
+        position: 'bottom-end',
+        icon: 'success',
+        title: `Verificar casos activos vencidos en: ${this.vencido}--${this.vencidoauto}--${this.vencidocontra}`,
+        showConfirmButton: false,
+        timer: 2300
+      })
 
   }
  

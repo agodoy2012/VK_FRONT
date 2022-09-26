@@ -1,4 +1,4 @@
-<div fxLayout="row wrap">
+<div fxLayout="row wrap" >
   <div fxFlex="100">
     <h1>{{parametro}}</h1>
   </div>
@@ -7,8 +7,8 @@
       <mat-card-content>
         <div fxLayout="row wrap" class="align-items-center">
           <div fxFlex.gt-md="25" fxFlex.gt-lg="25" fxFlex="100">
-            <mat-form-field>
-              <input matInput class="p-b-0" placeholder="Search here..." [(ngModel)]="searchText" />
+            <mat-form-field >
+              <input matInput class="p-b-0"   placeholder="Search here..." [(ngModel)]="searchText" />
             </mat-form-field>
           </div>
           <div fxFlex.gt-md="75" class="text-right">
@@ -18,7 +18,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-</div>
+</div> 
 <div fxLayout="row wrap">
   <div
     fxFlex.gt-lg="25"
@@ -29,8 +29,8 @@
   >
     <mat-card>
       <mat-card-content class="text-center">
-        <img src="assets/images/VKlogo.png" class="img-circle border p-5" width="75"  style="background-color:white" />
-        <h4 class="card-title m-t-15 m-b-0">{{ contact.USU_NOMBRE_COMPLETO }}</h4>
+        <img src="assets/images/user_p.png" class="img-circle border p-5" width="75"  style="background-color:white" />
+        <h4  class="card-title m-t-15 m-b-0">{{ contact.USU_NOMBRE_COMPLETO }}</h4>
         <div class="m-t-20">
         <a  [routerLink]="['../../taskboard/','CASOSVK', contact.ID,contact.SISTEMA]"  class="button" style="color:white">
       

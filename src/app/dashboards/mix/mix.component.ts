@@ -78,8 +78,8 @@ export class MixComponent implements AfterViewInit {
 /// crea las columnas  que se van a utilizar 
     breakpointObserver.observe(['(max-width: 600px)']).subscribe((result) => {
       this.displayedColumns = result.matches
-        ? [ 'id','Nombre', 'Sistema', 'Casos','Casosb','Link']
-        : ['id','Nombre', 'Sistema', 'Casos','Casosb','Link']
+        ? [ 'id','Nombre', 'Sistema', 'Casos','Vencidos','Casosb','Link']
+        : ['id','Nombre', 'Sistema', 'Casos','Vencidos','Casosb','Link']
     });
 
 
