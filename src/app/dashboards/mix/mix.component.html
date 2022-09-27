@@ -80,11 +80,11 @@
 
             <ng-container matColumnDef="Casos">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Vencidos </mat-header-cell>
-              <mat-cell *matCellDef="let row"> <a [routerLink]="['../../apps/ticketlist', row.ID]"> {{ row.VENCIDOS }}</a>  </mat-cell>
+              <mat-cell *matCellDef="let row"> <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']"> {{ row.VENCIDOS }}</a>  </mat-cell>
             </ng-container>
             <ng-container matColumnDef="Vencidos">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Por vencer </mat-header-cell>
-              <mat-cell *matCellDef="let row">  {{ row.POR_VENCER }} </mat-cell>
+              <mat-cell *matCellDef="let row">  <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']">{{ row.POR_VENCER }}</a> </mat-cell>
             </ng-container>
             <ng-container matColumnDef="Casosb">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Cerrados </mat-header-cell>

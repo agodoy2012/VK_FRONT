@@ -86,7 +86,7 @@ export class TicketlistComponent implements OnInit {
   parametro!: number ;
   tabnomb!: string;
   dataSource = new MatTableDataSource(this.respuestas);
-
+  buscarsn: number = 0;
   constructor(public dialog: MatDialog, public authservice: AuthService, private activatedRoute: ActivatedRoute) {   
 
 
@@ -107,9 +107,25 @@ export class TicketlistComponent implements OnInit {
     });
 
     if(this.parametro > 0){
-      this.nombre1 = "ABIERTO";
-      this.nombre2 = "CERRADO";
-      this.update();
+   
+      if(this.tabnomb == 'usuario')
+      {
+        this.buscarsn = 0;
+        this.nombre1 = "POR VENCER";
+        this.nombre2 = "VENCIDO";
+        this.vencidosusuario();
+        setTimeout(() => {
+          this.respuestas = this.respuestasven;
+         
+         }, 250);
+      }
+      else
+      {
+        this.buscarsn = 1;
+        this.nombre1 = "ABIERTO";
+        this.nombre2 = "CERRADO";
+        this.update();
+      }
     }
     else{
       this.nombre1 = "POR VENCER";
@@ -137,6 +153,8 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
     .subscribe( params =>{ 
       
       this.parametro = params.id;
+      this.tabnomb = params.tab;
+      
       if(params.tab){
   
       } 
@@ -146,11 +164,28 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
 
    
     if(this.parametro > 0){
-      this.nombre1 = "ABIERTO";
-      this.nombre2 = "CERRADO";
-      this.update();
+
+        if(this.tabnomb == 'usuario')
+        {
+          this.buscarsn = 0;
+          this.nombre1 = "POR VENCER";
+          this.nombre2 = "VENCIDO";
+          this.vencidosusuario();
+          setTimeout(() => {
+            this.respuestas = this.respuestasven;
+           
+           }, 250);
+        }
+        else
+        {
+          this.buscarsn = 1;
+          this.nombre1 = "ABIERTO";
+          this.nombre2 = "CERRADO";
+          this.update();
+        }
+      
     }
-    else{
+    else{ 
       this.nombre1 = "POR VENCER";
       this.nombre2 = "VENCIDO";
      this.vencidos();
@@ -189,11 +224,12 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
 
   update(){
  
-
+  
     
-    const tab = localStorage.getItem('tab');
+    const tab = this.tabnomb;
    ///// se realiza un switch para saber de que tab se esta haciendo la busqueda para buscar en esa empresa en particular 
-    switch(tab){
+    console.log(tab)
+   switch(tab){
       case 'Casos VK': 
       this.authservice.PostcasosUsuariosidVk(this.parametro)
       .subscribe(resp=>{
@@ -265,7 +301,44 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
 
 
   }
+  vencidosusuario(){
+ 
 
+    
+    const tab = localStorage.getItem('tab');
+   ///// se realiza un switch para saber de que tab se esta haciendo la busqueda para buscar en esa empresa en particular 
+    switch(tab){
+      case 'Casos VK': 
+      this.authservice.vensinpostVK(this.parametro)
+      .subscribe(resp=>{
+        this.respuestasven = resp;
+   
+      }); 
+      break
+
+
+      case 'Autostar':
+        this.authservice.vensinpostAutostar(this.parametro)
+        .subscribe(resp=>{
+          this.respuestasven = resp;
+       
+        });
+        break;
+        case 'Contratos':
+          this.authservice.vensinpostContratos(this.parametro)
+          .subscribe(resp=>{
+            this.respuestasven = resp;
+           
+          });
+        break
+
+    }
+   
+  
+
+
+
+  }
   applyFilter(filterValue: string): void {
   
 

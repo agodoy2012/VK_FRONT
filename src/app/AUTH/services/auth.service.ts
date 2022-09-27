@@ -44,7 +44,7 @@ return    this.http.get<Empresas[]>(url);
   }
 
 
- 
+  
 //// retorna los historicos de 6 meses de casos cerrados, abiertos y total de casos
 
 
@@ -112,7 +112,10 @@ return    this.http.get<Empresas[]>(url);
 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////////////////
 
 
 
@@ -138,6 +141,7 @@ return    this.http.get<Empresas[]>(url);
   const url = `${ this.link }casosUsuariosContratos?usuario=${usuarios}`;
 
   const body = {usuarios};
+  console.log(url)
 
   return    this.http.post<PostcasosUsuariosid[]>(url,body);
  }
@@ -582,7 +586,7 @@ login(usuario:string, contrasenna: string){
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+ 
 
 
 
@@ -617,7 +621,37 @@ vensinContratos(){
 
 
 
+/////////////////////////////////////////////////// listado de casos vencidos y por vencer por usuario//////////////////////////////////////
 
+
+vensinpostVK(usuario:number){
+  const url = `${ this.link }casosActivosEstUsuariosCasos?usuario=${usuario}`;
+  const body = {usuario};
+  console.log(url)
+  console.log("correcto")
+  return    this.http.post<vensin[]>(url,body);
+
+}
+vensinpostAutostar(usuario:number){
+  const url = `${ this.link }casosActivosEstUsuariosAutostar?usuario=${usuario}`;
+  const body = {usuario};
+ 
+  return    this.http.post<vensin[]>(url,body);
+}
+vensinpostContratos(usuario:number){
+  const url = `${ this.link }casosActivosEstUsuariosContratos?usuario=${usuario}`;
+  const body = {usuario};
+ 
+  return    this.http.post<vensin[]>(url,body);
+
+}
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
