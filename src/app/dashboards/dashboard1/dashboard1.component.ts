@@ -40,7 +40,7 @@ export class Dashboard1Component implements OnInit {
   vencidoauto!: string;
   vencidocontra!: string;
   emp = localStorage.getItem('tab');//leer en que tab se encuentra 
-
+  status = false;
   constructor(private authservice: AuthService) {
  
     

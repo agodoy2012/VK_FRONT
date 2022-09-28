@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse, TotalTrabajo, TotalVencido, vensin } from '../interfaces/interfaces';
+import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse, TotalTrabajo, TotalVencido, vensin, fact, escfirmada, soleg } from '../interfaces/interfaces';
 import { Data } from '@angular/router';
 import { async } from '@angular/core/testing';
 import { HttpHeaders } from '@angular/common/http';
@@ -141,7 +141,7 @@ return    this.http.get<Empresas[]>(url);
   const url = `${ this.link }casosUsuariosContratos?usuario=${usuarios}`;
 
   const body = {usuarios};
-  console.log(url)
+  
 
   return    this.http.post<PostcasosUsuariosid[]>(url,body);
  }
@@ -627,8 +627,7 @@ vensinContratos(){
 vensinpostVK(usuario:number){
   const url = `${ this.link }casosActivosEstUsuariosCasos?usuario=${usuario}`;
   const body = {usuario};
-  console.log(url)
-  console.log("correcto")
+ 
   return    this.http.post<vensin[]>(url,body);
 
 }
@@ -657,8 +656,39 @@ vensinpostContratos(usuario:number){
 
 
 
+/////////////////////////////////////////////////// FACTURACION (POR AHORA SOLO AUTOSTAR//////////////////////////////////////
 
 
+
+factAutostar(fechini:string, fechfin: string){
+  const url = `${ this.link }datosFacturacionAutostar?inicio=${fechini}&fin=${fechfin}`;
+  const body = {fechfin,fechini};
+ 
+  return    this.http.post<fact[]>(url,body);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////DETALLE  FACTURACION (POR AHORA SOLO AUTOSTAR//////////////////////////////////////
+
+
+
+detfactAutostar(fechini:string, fechfin: string, tipo: string){
+  const url = `${ this.link }datosFacturacionAutostarDetalle?inicio=${fechini}&fin=${fechfin}&tipo=${tipo}`;
+  const body = {fechfin,fechini};
+  console.log(url)
+
+  return    this.http.post<escfirmada[]>(url,body);
+}
+detfactAutostarSoleg(fechini:string, fechfin: string, tipo: string){
+  const url = `${ this.link }datosFacturacionAutostarDetalle?inicio=${fechini}&fin=${fechfin}&tipo=${tipo}`;
+  const body = {fechfin,fechini};
+  
+
+  return    this.http.post<soleg[]>(url,body);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 }

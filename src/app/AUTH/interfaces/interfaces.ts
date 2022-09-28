@@ -1,3 +1,4 @@
+import { DecimalPipe } from "@angular/common"
 
 
 export interface Empresas {
@@ -89,4 +90,56 @@ export interface AuthResponse{
     TITULO: string,
     FECHA: string,
     USUARIO: string
+ }
+
+ export interface fact{
+    TIPO?: string,
+    TOTAL?: number,
+    MONTO_TOTAL?: string
+ }
+
+ export interface escfirmada{
+    ID?: number,
+    NombreInstitucion?: string,
+    Sucursal?: string,
+    Marca?: string,
+    Estilo?: string,
+    Nombre?: string,
+    Incluido?: string,
+    Estado?: string,
+    FechaEstado?: string,
+    Tipo?: number,
+    Pedido?: string,
+    placa?: string,
+    UltFecha?: string,
+    Estado1?: string,
+    Escritura?: string,
+    Prenda?: string,
+    Boleta?: string,
+    Asiento?: string,
+    FechaTitulo?: string,
+    Chasis?: string,
+    SPE?: number,
+    NotaGeneral?: string,
+    Nuevo?: number,
+    NuevoTexto?: string,
+    Chasis_Placa?: string,
+
+ }
+
+ export interface soleg{
+    ID?: number,
+    Fecha?: string,
+    Solicitante?: string,
+    FkDep?: number,
+    Abreviacion?: string,
+    Nombre_Dep?: string,
+    Codigo?: string,
+    FkTipoDoc?: number,
+    Nombre_Tipo?: string,
+    Timbres?: number,
+    PapelSeguridad?: number,
+    Otro?: number,
+    Pedido?: string,
+    Total?: number
  }

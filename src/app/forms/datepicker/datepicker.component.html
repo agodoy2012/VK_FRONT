@@ -1,295 +1,231 @@
 <!-- ============================================================== -->
 <!-- Fixed height Card Grid-->
 <!-- ============================================================== -->
-<div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Basic Datepicker</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div fxLayout="row wrap">
-  <!-- Grid-->
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker start date</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field>
-          <input matInput [matDatepicker]="picker2" placeholder="Choose a date" />
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2 startView="year" [startAt]="startDate"></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div fxLayout="row wrap">
-  <!-- Grid-->
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker selected value</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field>
-          <input
-            matInput
-            [matDatepicker]="picker3"
-            placeholder="Angular forms"
-            [formControl]="date"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
-        </mat-form-field>
 
-        <mat-form-field>
-          <input
-            matInput
-            [matDatepicker]="picker4"
-            placeholder="Angular forms (w/ deserialization)"
-            [formControl]="serializedDate"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
-          <mat-datepicker #picker4></mat-datepicker>
-        </mat-form-field>
 
-        <mat-form-field>
-          <input
-            matInput
-            [matDatepicker]="picker5"
-            placeholder="Value binding"
-            [value]="date.value"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
-          <mat-datepicker #picker5></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
 <div fxLayout="row wrap">
-  <!-- Grid-->
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker input and change events</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field>
-          <input
-            matInput
-            [matDatepicker]="picker6"
-            placeholder="Input & change events"
-            (dateInput)="addEvent('input', $event)"
-            (dateChange)="addEvent('change', $event)"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
-          <mat-datepicker #picker6></mat-datepicker>
-        </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" #dateRangeStart >
+      <input matEndDate placeholder="End date"  #dateRangeEnd (dateInput)="dateRangeChange(dateRangeStart,  dateRangeEnd) " disabled clear-on-cancel="true"
+      >
+      
+      
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</mat-card>
+  </div> 
+</div>
+ 
 
-        <div class="b-all p-20">
-          <div *ngFor="let e of events">{{ e }}</div>
+<div fxLayout="row wrap">
+  <div fxLayout="row wrap" style="justify-content:center; width: 100%; " fxLayout="row" fxLayout="center" >
+  <div fxFlex.gt-sm="30" fxFlex.gt-xs="100" fxFlex="100" *ngFor="let e of events">
+    <mat-card>
+      <mat-card-content>
+        <!-- Row -->
+        <div class="d-flex no-block" (click)="updatetabla(e.TIPO)">
+          <!-- column -->
+          <div class="m-r-10 no-shrink">
+            <button mat-fab color="warn" mat-card-icon style="background-color:green">
+              <mat-icon>attach_money</mat-icon>
+            </button>
+          </div>
+          <!-- column -->
+          <div> 
+            <h3 class="m-0">{{e.MONTO_TOTAL}}</h3>
+            <h6 class="text-muted m-0"> Total Casos: {{e.TOTAL}} </h6>
+            <h5 class="text-muted m-0">{{e.TIPO}}</h5>
+          </div>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
+
+
+
+
+</div>
 </div>
 <div fxLayout="row wrap">
-  <!-- Grid-->
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Disabled datepicker</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <p>
-          <mat-form-field>
-            <input matInput [matDatepicker]="dp1" placeholder="Completely disabled" disabled />
-            <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
-            <mat-datepicker #dp1></mat-datepicker>
-          </mat-form-field>
-        </p>
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>DETALLE FACTURAS</mat-card-title>
+          <div class="bg-light p-10 p-r-20 p-l-20">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+            </mat-form-field>
+          </div>
+          <div  class="example-container responsive-table">
+            <mat-table [dataSource]="dataSource" matSort *ngIf="tablas == 0" style="width:1200 !important">
+              <!-- ID Column --> 
+              <ng-container matColumnDef="id" >
+                <mat-header-cell *matHeaderCellDef > ID </mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.ID }}</mat-cell>
+                
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="Sistema">
+                <mat-header-cell *matHeaderCellDef  > PEDIDO </mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{ row.Pedido }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="Nombre">
+                <mat-header-cell *matHeaderCellDef > FECHA </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.FechaEstado }} </mat-cell>
+              </ng-container>
+  
+  
+  
+  
+              <ng-container matColumnDef="Casos">
+                <mat-header-cell *matHeaderCellDef > CLIENTE </mat-header-cell>
+                <mat-cell *matCellDef="let row" >  {{ row.Nombre }}  </mat-cell>
+              </ng-container>
+              
+     
 
-        <p>
-          <mat-form-field>
-            <input matInput [matDatepicker]="dp2" placeholder="Popup disabled" />
-            <mat-datepicker-toggle matSuffix [for]="dp2" disabled></mat-datepicker-toggle>
-            <mat-datepicker #dp2></mat-datepicker>
-          </mat-form-field>
-        </p>
 
-        <p>
-          <mat-form-field>
-            <input matInput [matDatepicker]="dp3" placeholder="Input disabled" disabled />
-            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-          </mat-form-field>
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+
+
+
+              <ng-container matColumnDef="Vencidos">
+                <mat-header-cell *matHeaderCellDef> INSTITUCION </mat-header-cell>
+                <mat-cell *matCellDef="let row" style=" justify-content:center;">  {{ row.NombreInstitucion }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="Casosb">
+                <mat-header-cell *matHeaderCellDef > CHASIS/PLACA </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Chasis_Placa }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="Link">
+                <mat-header-cell *matHeaderCellDef > ESTILO </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.Estilo}} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="Escritura">
+                <mat-header-cell *matHeaderCellDef> ESCRITURA </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Escritura }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="Boleta">
+                <mat-header-cell *matHeaderCellDef > BOLTA </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Boleta }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="Precio">
+                <mat-header-cell *matHeaderCellDef > PRECIO </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.SPE }} </mat-cell>
+              </ng-container> 
+              <!-- Name Column --> 
+        
+              <!-- Color Column -->
+         
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+            </mat-table>
+            <mat-table [dataSource]="dataSource" matSort *ngIf="tablas == 1">
+              <!-- ID Column -->
+              <ng-container matColumnDef="ID">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                <mat-cell *matCellDef="let row">{{ row.ID }}</mat-cell>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="SOLICITANTE">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> SOLICITANTE </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.Solicitante }} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="FECHA">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> FECHA </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ row.Fecha }} </mat-cell>
+              </ng-container>
+  
+  
+  
+  
+              <ng-container matColumnDef="DEPARTAMENTO">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> DEPARTAMENTO </mat-header-cell>
+                <mat-cell *matCellDef="let row" >  {{ row.Nombre_Dep }}  </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="INSTITUCION">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> INSTITUCION </mat-header-cell>
+                <mat-cell *matCellDef="let row" style=" justify-content:center;">  {{ row.Abreviacion }}</mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="CODIGO">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> CODIGO </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Codigo }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="T.DOC">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> T.DOC </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.FkTipoDoc}} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="TIMBRES">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> TIMBRES </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Timbres }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="P.SEGURIDAD">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> P.SEGURIDAD </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.PapelSeguridad }} </mat-cell>
+              </ng-container> 
+              <ng-container matColumnDef="TOTAL">
+                <mat-header-cell *matHeaderCellDef mat-sort-header stickyEnd> TOTAL </mat-header-cell>
+                <mat-cell *matCellDef="let row">  {{ row.Total }} </mat-cell>
+              </ng-container> 
+              <!-- Name Column --> 
+        
+              <!-- Color Column -->
+         
+  
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              
+            </mat-table>
+  
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  
+  
+  
 </div>
 <div fxLayout="row wrap">
-  <!-- Grid-->
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker touch UI</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker7" placeholder="Choose a date" />
-          <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
-          <mat-datepicker touchUi="true" #picker7></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
+
 </div>
 <div fxLayout="row wrap">
-  <!-- Grid-->
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker open method</mat-card-title>
-        <mat-card-subtitle>A material 2 component for datepicker</mat-card-subtitle>
-        <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker8" placeholder="Choose a date" />
-          <mat-datepicker #picker8></mat-datepicker>
-        </mat-form-field>
-        <button mat-raised-button (click)="picker8.open()">Open</button>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <!-- Grid-->
-</div>
 
-<div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Changing the datepicker colors</mat-card-title>
-        <mat-form-field color="accent">
-          <mat-label>Inherited calendar color</mat-label>
-          <input matInput [matDatepicker]="picker111" />
-          <mat-datepicker-toggle matSuffix [for]="picker111"></mat-datepicker-toggle>
-          <mat-datepicker #picker111></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field color="accent">
-          <mat-label>Custom calendar color</mat-label>
-          <input matInput [matDatepicker]="picker222" />
-          <mat-datepicker-toggle matSuffix [for]="picker222"></mat-datepicker-toggle>
-          <mat-datepicker #picker222 color="success"></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-
-<div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker with min & max validation</mat-card-title>
-        <mat-form-field class="example-full-width">
-          <input
-            matInput
-            [min]="minDate"
-            [max]="maxDate"
-            [matDatepicker]="minpicker"
-            placeholder="Choose a date"
-          />
-          <mat-datepicker-toggle matSuffix [for]="minpicker"></mat-datepicker-toggle>
-          <mat-datepicker #minpicker></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-
-<div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker with filter validation</mat-card-title>
-        <mat-form-field class="example-full-width">
-          <input
-            matInput
-            [matDatepickerFilter]="myFilter"
-            [matDatepicker]="filterpicker"
-            placeholder="Choose a date"
-          />
-          <mat-datepicker-toggle matSuffix [for]="filterpicker"></mat-datepicker-toggle>
-          <mat-datepicker #filterpicker></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-
-<div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Datepicker input and change events</mat-card-title>
-        <mat-form-field>
-          <input
-            matInput
-            [matDatepicker]="pickerevent"
-            placeholder="Input & change events"
-            (dateInput)="addEvent('input', $event)"
-            (dateChange)="addEvent('change', $event)"
-          />
-          <mat-datepicker-toggle matSuffix [for]="pickerevent"></mat-datepicker-toggle>
-          <mat-datepicker #pickerevent></mat-datepicker>
-        </mat-form-field>
-
-        <div class="example-events">
-          <div *ngFor="let e of events">{{ e }}</div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>
 
 <div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Setting the locale code</mat-card-title>
-        <mat-form-field>
-          <input matInput [matDatepicker]="dp" placeholder="Different locale" />
-          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-          <mat-datepicker #dp></mat-datepicker>
-        </mat-form-field>
 
-        <button mat-button (click)="french()">Dynamically switch to French</button>
-      </mat-card-content>
-    </mat-card>
-  </div>
+</div>
+
+<div fxLayout="row wrap">
+
+</div>
+
+<div fxLayout="row wrap">
+
+</div>
+
+<div fxLayout="row wrap">
+
+</div>
+
+<div fxLayout="row wrap">
+
 </div>
 
 <!-- New -->
 <div fxLayout="row wrap">
-  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title
-          >Datepicker with custom formats <span class="label label-primary">New</span>
-        </mat-card-title>
-        <mat-form-field class="m-t-15">
-          <mat-label>Verbose datepicker</mat-label>
-          <input matInput [matDatepicker]="customdp" [formControl]="customdate" />
-          <mat-datepicker-toggle matSuffix [for]="customdp"></mat-datepicker-toggle>
-          <mat-datepicker #customdp></mat-datepicker>
-        </mat-form-field>
-      </mat-card-content>
-    </mat-card>
-  </div>
+
 </div>

@@ -113,7 +113,7 @@ export class MixComponent implements AfterViewInit {
     switch(this.tab){
       case 'Casos VK': 
 
-      
+       
 
       this.authservice.CasosUsuariosVK()
       .subscribe(resp=>{

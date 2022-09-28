@@ -43,14 +43,45 @@
     </mat-card>
   </div>
 
-</div>
+  <a [routerLink]="['../../forms/datepicker']">
 
+  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <!-- Row -->
+        <div class="d-flex no-block">
+          <!-- column -->
+          <div class="m-r-10 no-shrink" style="display: flex; align-items: center; justify-content: center;">
+            <button mat-fab  mat-card-icon style="background-color:orange">
+              <mat-icon>attach_money</mat-icon>
+            </button>
+          </div>
+          <!-- column -->
+          <div>
+            <h3 class="m-0">Facturación</h3>
+            
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+
+   
+  </a>
+</div>
+ 
 
 
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
+        <div class="d-flex no-block">
         <mat-card-title>USUARIOS</mat-card-title>
+        <span class="spacer"></span>
+ 
+      </div>
         <div class="bg-light p-10 p-r-20 p-l-20">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
