@@ -85,7 +85,12 @@ export class DatepickerComponent {
 
   dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
 
-    if((dateRangeStart)&&(dateRangeEnd.value.length==9))
+    console.log("rangos")
+    console.log(dateRangeStart)
+    console.log(dateRangeEnd.value.length)
+    console.log("fin rangos")
+
+    if((dateRangeStart)&&((dateRangeEnd.value.length==9)||(dateRangeEnd.value.length==10)))
     {
 
       
@@ -172,7 +177,7 @@ export class DatepickerComponent {
         .subscribe(resp=>{
       
             this.respuestas = resp;
-        
+            console.log(resp);
          
       
         });

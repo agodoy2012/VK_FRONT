@@ -10,7 +10,7 @@ export class TopCard2Component implements OnInit  {
 
   casospor = 0;
   abrpor = 0;
-  cerr = 0; 
+  cerr = 0;  
   idvk!: string;
   idautostar!: string;
   idcontratos!: string;
@@ -118,8 +118,7 @@ export class TopCard2Component implements OnInit  {
 
       id3 = this.idvk;
     }
-    console.log("entra a los id de vk")
-    console.log(this.idvk,id3,tab)
+  
       this.authservice.CasosActualesCasosid(id3!)
       .subscribe(resp=>{
         this.total = resp[0].CASOS?.toString();

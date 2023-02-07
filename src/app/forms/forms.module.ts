@@ -26,6 +26,10 @@ import { FormValidationComponent } from './form-validation/form-validation.compo
 import { UploadComponent } from './file-upload/upload.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
+import { FbuscarComponent } from './form-validation/fbuscar/fbuscar.component';
+import { VkheadComponent } from './form-validation/vkhead/vkhead.component';
+import { ContratosHeadComponent } from './form-validation/contratos-head/contratos-head.component';
+import { ContratosFechasComponent } from './form-validation/contratos-fechas/contratos-fechas.component';
 
 @NgModule({
   imports: [
@@ -55,6 +59,10 @@ import { MultiselectComponent } from './multiselect/multiselect.component';
     UploadComponent,
     WizardComponent,
     MultiselectComponent,
+    FbuscarComponent,
+    VkheadComponent,
+    ContratosHeadComponent,
+    ContratosFechasComponent,
   ],
 })
 export class FormModule {}

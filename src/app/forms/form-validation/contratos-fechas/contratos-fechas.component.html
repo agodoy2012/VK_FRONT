@@ -1,0 +1,93 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>  
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" #dateRangeStart >
+        <input matEndDate placeholder="End date"  #dateRangeEnd (dateInput)="dateRangeChange(dateRangeStart,  dateRangeEnd) " disabled clear-on-cancel="true"
+        >
+        
+         
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </mat-card>
+    </div> 
+  </div>
+  <div fxLayout="row wrap">
+    <div class="d-flex no-block">
+      <!-- column -->
+   
+      <!-- column -->
+      <div  fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100"> 
+        <h3>TOTAL: {{total}}</h3>
+    
+         
+      </div>
+    </div>
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>DETALLE FACTURAS</mat-card-title>
+            <div class="bg-light p-10 p-r-20 p-l-20">
+              <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+              </mat-form-field>
+            </div>
+            <div  class="example-container responsive-table">
+              <mat-table [dataSource]="dataSource" matSort  style="width:1200 !important">
+                <!-- ID Column --> 
+                <ng-container matColumnDef="id" >
+                  <mat-header-cell *matHeaderCellDef > ID </mat-header-cell>
+                  <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+                  
+                </ng-container>
+    
+    
+                <ng-container matColumnDef="Sistema">
+                  <mat-header-cell *matHeaderCellDef  > NOMBRE </mat-header-cell>
+                  <mat-cell *matCellDef="let row" > {{ row.descripcion }} </mat-cell>
+                </ng-container>
+     
+                <ng-container matColumnDef="Nombre">
+                  <mat-header-cell *matHeaderCellDef > DESCRIPCION </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{ row.descripcion }} </mat-cell>
+                </ng-container>
+    
+    
+    
+    
+                <ng-container matColumnDef="Casos">
+                  <mat-header-cell *matHeaderCellDef > VALOR </mat-header-cell>
+                  <mat-cell *matCellDef="let row" >  {{ row.valor }}  </mat-cell>
+                </ng-container>
+                
+       
+  
+  
+  
+  
+  
+                <ng-container matColumnDef="Vencidos">
+                  <mat-header-cell *matHeaderCellDef> FECHA </mat-header-cell>
+                  <mat-cell *matCellDef="let row" style=" justify-content:center;">  {{ row.fecha | date: 'dd-MM-yyyy' }} </mat-cell>
+                </ng-container>
+              
+              
+               
+                <!-- Name Column --> 
+          
+                <!-- Color Column -->
+           
+    
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+              </mat-table>
+              </div>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              </div>

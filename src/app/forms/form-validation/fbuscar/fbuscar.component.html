@@ -1,0 +1,97 @@
+<H1>LISTADO DE CONTRATOS</H1>
+<mat-card-actions>
+  <button *ngIf="parametro==='vk'" mat-raised-button style="background-color:green ;" type="submit" (click)="contratos(0)">
+    FACTURACION DETALLADA
+  </button>
+  <button *ngIf="parametro==='contratos'" mat-raised-button style="background-color:green ;" type="submit" (click)="contratos(1)">
+    FACTURACION DETALLADA
+  </button> 
+</mat-card-actions>
+<div>
+    <mat-card> 
+      <mat-card-content>
+
+        <div >
+          <mat-form-field>
+            <input *ngIf="parametro ==='vk'" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+            <input *ngIf="parametro ==='contratos'" matInput (keyup)="applyFilter2($event.target.value)" placeholder="Filter" />
+        </mat-form-field>
+        </div>
+        <div class="responsive-table" >
+          <mat-table *ngIf="parametro==='vk'" [dataSource]="dataSource" matSort>
+            <!-- ID Column --> 
+            <ng-container matColumnDef="id" style="width:10px !important; "  >
+              <mat-header-cell  *matHeaderCellDef   style="justify-content:center !important ; " > ID </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="col-sm-6" style="justify-content:center !important ;">{{ row.CCA_NUMERO_CASO }}</mat-cell>
+            </ng-container>
+
+ 
+            <ng-container matColumnDef="Sistema">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> CLIENTE </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;"> {{ row.NOMBRE_CLIENTE }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Nombre">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> CONTRATO </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;">{{ row.NOMBRE_CLIENTE }} </mat-cell>
+            </ng-container>
+
+
+
+
+           
+            <ng-container matColumnDef="Link">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+              <mat-cell *matCellDef="let row">    <a [routerLink]="['../../vk',row.CCA_NUMERO_CASO]"><i class="fa fa-dollar"></i
+              ></a> </mat-cell>
+            </ng-container> 
+ 
+            <!-- Name Column --> 
+      
+            <!-- Color Column -->
+       
+
+            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns2"> </mat-row>
+          </mat-table>
+          <mat-table *ngIf="parametro==='contratos'" [dataSource]="dataSource2" matSort>
+            <!-- ID Column -->
+            <ng-container matColumnDef="id" style="width:10px !important; "  >
+              <mat-header-cell  *matHeaderCellDef   style="justify-content:center !important ; " > ID </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="col-sm-6" style="justify-content:center !important ;">{{ row.ID }}</mat-cell>
+            </ng-container>
+
+ 
+            <ng-container matColumnDef="Sistema">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> CLIENTE </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;"> {{ row.Proveedor }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Nombre">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> CONTRATO </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;">{{ row.Proveedor }} </mat-cell>
+            </ng-container>
+
+
+
+
+           
+            <ng-container matColumnDef="Link">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+              <mat-cell *matCellDef="let row">    <a [routerLink]="['../../contratos',row.ID]"><i class="fa fa-dollar"></i
+              ></a> </mat-cell>
+            </ng-container> 
+ 
+            <!-- Name Column --> 
+      
+            <!-- Color Column -->
+       
+
+            <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns2"> </mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div> 

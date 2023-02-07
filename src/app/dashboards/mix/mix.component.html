@@ -1,5 +1,23 @@
 <div fxLayout="row wrap">
+  <div >    <span class="spacer"></span></div>
+  <span class="spacer"></span>
   <div fxLayout="row wrap" style="justify-content:center; width: 100%; " fxLayout="row" fxLayout="center" >
+   
+  <h3>DATOS CORRESPONDIENTES A:   {{mesmostrar}}/{{anoactual}}</h3>
+  <br>
+  <br>
+  </div>
+  <div fxLayout="row wrap" style="justify-content:center; width: 100%; " fxLayout="row" fxLayout="center" >
+    
+  
+    <mat-card-title>ASIGNACION DE ABOGADOS Y FACTURACION</mat-card-title> 
+    <br>
+    
+    <br>
+  </div> 
+  <div fxLayout="row wrap" style="justify-content:center; width: 100%; " fxLayout="row" fxLayout="center" >
+
+
   <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
@@ -14,7 +32,7 @@
           <!-- column -->
           <div> 
             <h3 class="m-0">{{trabajo}}</h3>
-            <h6 class="text-muted m-0">CON TRABAJO</h6>
+            <h6 class="text-muted m-0">ABOGADOS CON TRABAJO</h6>
           </div>
         </div>
       </mat-card-content>
@@ -36,52 +54,118 @@
           <!-- column -->
           <div>
             <h3 class="m-0">{{sintrab}}</h3>
-            <h6 class="text-muted m-0">SIN TRABAJO</h6>
+            <h6 class="text-muted m-0">ABOGADOS SIN TRABAJO</h6>
           </div>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
 
-  <a [routerLink]="['../../forms/datepicker']">
-
-  <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card>
-      <mat-card-content>
-        <!-- Row -->
-        <div class="d-flex no-block">
-          <!-- column -->
-          <div class="m-r-10 no-shrink" style="display: flex; align-items: center; justify-content: center;">
-            <button mat-fab  mat-card-icon style="background-color:orange">
-              <mat-icon>attach_money</mat-icon>
-            </button>
-          </div>
-          <!-- column -->
-          <div>
-            <h3 class="m-0">Facturación</h3>
-            
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
+ 
 
 
    
-  </a>
+  
+
+    <div fxFlex.gt-sm="25" fxFlex.gt-xs="100" fxFlex="100" >
+      <mat-card>
+        <mat-card-content> 
+          <!-- Row -->
+          <a *ngIf="tab === 'Autostar'"  [routerLink]="['../../forms/datepicker']">
+            <div class="d-flex no-block">
+              <!-- column -->
+              <div class="m-r-10 no-shrink">
+                <button mat-fab  mat-card-icon style="background-color:orange">
+                  <mat-icon>attach_money</mat-icon>
+                </button>
+              </div>
+              <!-- column -->
+              <div> 
+                
+                <h6 class="text-muted m-0">FACTURACIÓN</h6>
+                <h6 class="text-muted m-0">GENERAL</h6>
+                
+              </div>
+            </div>
+          </a>
+          <a *ngIf="tab === 'Casos VK'"  [routerLink]="['../../forms/form-validation/fbuscar','vk']">
+            <div class="d-flex no-block">
+              <!-- column -->
+              <div class="m-r-10 no-shrink">
+                <button mat-fab  mat-card-icon style="background-color:orange">
+                  <mat-icon>attach_money</mat-icon>
+                </button>
+              </div>
+              <!-- column -->
+              <div>
+                
+                <h6 class="text-muted m-0">FACTURACIÓN</h6>
+                <h6 class="text-muted m-0">GENERAL</h6>
+                
+              </div>
+            </div>
+          </a>
+          <a *ngIf="tab === 'Contratos'" [routerLink]="['../../forms/form-validation/fbuscar','contratos']">
+         
+          <div class="d-flex no-block">
+            <!-- column -->
+            <div class="m-r-10 no-shrink">
+              <button mat-fab  mat-card-icon style="background-color:orange">
+                <mat-icon>attach_money</mat-icon>
+              </button>
+            </div>
+            <!-- column -->
+            <div>
+              
+              <h6 class="text-muted m-0">FACTURACIÓN</h6>
+              <h6 class="text-muted m-0">GENERAL</h6>
+              
+            </div>
+          </div>
+        </a>
+        <br>
+  <br>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+    <br>
+    <br>
+   
+<br>
 </div>
  
+<div fxLayout="row wrap" style="justify-content:center; width: 100%; " fxLayout="row" fxLayout="center" >
+   
+   
+  <mat-card-title>LISTADO DE ABOGADOS</mat-card-title>
 
+
+</div> 
+
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>  
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" #dateRangeStart >
+      <input matEndDate placeholder="End date"  #dateRangeEnd (dateInput)="dateRangeChange(dateRangeStart,  dateRangeEnd) " disabled clear-on-cancel="true"
+      >
+      
+      
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</mat-card>
+  </div> 
 
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
     <mat-card>
       <mat-card-content>
-        <div class="d-flex no-block">
-        <mat-card-title>USUARIOS</mat-card-title>
-        <span class="spacer"></span>
- 
-      </div>
+
         <div class="bg-light p-10 p-r-20 p-l-20">
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
@@ -97,7 +181,7 @@
 
 
             <ng-container matColumnDef="Sistema">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Casos </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Total Casos </mat-header-cell>
               <mat-cell *matCellDef="let row"> {{ row.CASOS }} </mat-cell>
             </ng-container>
 
@@ -111,11 +195,11 @@
 
             <ng-container matColumnDef="Casos">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Vencidos </mat-header-cell>
-              <mat-cell *matCellDef="let row"> <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']"> {{ row.VENCIDOS }}</a>  </mat-cell>
+              <mat-cell *matCellDef="let row"> <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']" style="color:red; font-size:2ch !important;"> {{ row.VENCIDOS }}</a>  </mat-cell>
             </ng-container>
             <ng-container matColumnDef="Vencidos">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Por vencer </mat-header-cell>
-              <mat-cell *matCellDef="let row">  <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']">{{ row.POR_VENCER }}</a> </mat-cell>
+              <mat-cell *matCellDef="let row">  <a [routerLink]="['../../apps/ticketlist', row.ID,'usuario']" style="color:orange; font-size:2ch !important;">{{ row.POR_VENCER }}</a> </mat-cell>
             </ng-container>
             <ng-container matColumnDef="Casosb">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Cerrados </mat-header-cell>

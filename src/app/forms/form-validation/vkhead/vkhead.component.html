@@ -1,0 +1,132 @@
+<mat-card>
+    <mat-card-content>
+      <mat-card-title>Detalle de casos</mat-card-title>
+  
+      <form [formGroup]="form">
+        <div fxLayout="row wrap">
+          <div class="p-10" fxFlex.gt-sm="33" > 
+            <h4>CASO:</h4>
+            <mat-form-field>
+               
+              <input matInput placeholder="No. de caso" [readonly]="true" [formControl]="form.controls['fcaso']" />
+            </mat-form-field>
+        
+          </div>
+          <div class="p-10" fxFlex.gt-sm="33" >
+            <h4>Fecha Inicio:</h4>
+            <mat-form-field>
+               
+              <input matInput placeholder="Fecha inicial" [readonly]="true" [formControl]="form.controls['finicio'] " />
+            </mat-form-field>
+        
+          </div>
+          <div class="p-10" fxFlex.gt-sm="33" >
+            <h4>Fecha Limite:</h4>
+            <mat-form-field>
+               
+              <input matInput placeholder="Fecha Exp." [readonly]="true" [formControl]="form.controls['flimite']" />
+            </mat-form-field>
+        
+          </div>
+          <div class="p-10" fxFlex.gt-sm="100" >
+            <h4>Nombre:</h4>
+            <mat-form-field>
+               
+              <input matInput placeholder="Nombre" [readonly]="true" [formControl]="form.controls['fnombre']" />
+            </mat-form-field>
+        
+          </div>
+  
+          <div class="p-10" fxFlex.gt-sm="100" >
+            <h4>Comentario:</h4>
+            <mat-form-field> 
+               
+              <input matInput placeholder="Comentario"  [readonly]="true" [formControl]="form.controls['fcomentario']" />
+            </mat-form-field>
+        
+          </div>
+          <div class="p-10" fxFlex.gt-sm="33" >
+            <h4>Total Facturado:</h4>
+            <mat-form-field>
+               
+              <input matInput placeholder="Total"  [readonly]="true" [formControl]="form.controls['ffactura']" />
+            </mat-form-field>
+        
+          </div> 
+  
+  
+          <div class="p-10" fxFlex.gt-sm="50" style="text-align: center; " >
+          
+        <mat-card-actions>
+            <button mat-raised-button style="background-color:green ;" type="submit" [routerLink]="['../../../form-validation/factura/','vk',parametro]">
+              FACTURAR
+            </button>
+            <button mat-raised-button color="primary" type="submit" (click)="contratos()" style="background-color:blue ;">
+                CONTRATOS
+              </button>
+          </mat-card-actions>
+        
+          </div>
+  
+        
+         
+  
+        
+  
+        </div>
+  
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <div>
+    <mat-card>
+      <mat-card-content>
+
+        <div >
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" />
+          </mat-form-field>
+        </div>
+        <div class="responsive-table" >
+          <mat-table [dataSource]="dataSource" matSort> 
+            <!-- ID Column -->
+            <ng-container matColumnDef="id" style="width:10px !important; "  >
+              <mat-header-cell  *matHeaderCellDef   style="justify-content:center !important ;  " > Fecha: </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="col-sm-6" style="padding-right: 5px;"> {{ row.fecha | date: 'dd-MM-yyyy' }}</mat-cell>
+            </ng-container>
+
+ 
+            <ng-container matColumnDef="Sistema">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;"> {{ row.descripcion }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Nombre">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="justify-content:center !important ;"> Valor: </mat-header-cell>
+              <mat-cell *matCellDef="let row" style="padding-right: 5px;justify-content:center !important ;">{{ row.valor }} </mat-cell>
+            </ng-container>
+
+
+
+
+           
+            <ng-container matColumnDef="Link">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+              <mat-cell *matCellDef="let row">    <i (click)="eliminar(row.id)" class="fa fa-trash" style="color:red ;"></i
+              > </mat-cell>
+            </ng-container> 
+ 
+            <!-- Name Column --> 
+      
+            <!-- Color Column -->
+       
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+          </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div> 

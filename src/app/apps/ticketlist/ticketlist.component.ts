@@ -84,7 +84,7 @@ export class TicketlistComponent implements OnInit {
   respuestas:casosVK[] = [];
   respuestasven: vensin[] = [];
   parametro!: number ;
-  tabnomb!: string;
+  tabnomb: string = "";
   dataSource = new MatTableDataSource(this.respuestas);
   buscarsn: number = 0;
   constructor(public dialog: MatDialog, public authservice: AuthService, private activatedRoute: ActivatedRoute) {   
@@ -97,14 +97,14 @@ export class TicketlistComponent implements OnInit {
 
     ///// se leee los parametros que vienen en el link
     this.activatedRoute.params
-   
+    
     .subscribe( params =>{
      
       this.parametro = params.id;
       this.tabnomb = params.tab;
     
       
-    });
+    }); 
 
     if(this.parametro > 0){
    
@@ -117,10 +117,12 @@ export class TicketlistComponent implements OnInit {
         setTimeout(() => {
           this.respuestas = this.respuestasven;
          
-         }, 250);
+         }, 500);
       }
       else
       {
+        const tabpr =  localStorage.getItem('tab')!;
+        this.tabnomb =  tabpr;
         this.buscarsn = 1;
         this.nombre1 = "ABIERTO";
         this.nombre2 = "CERRADO";
@@ -174,7 +176,7 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
           setTimeout(() => {
             this.respuestas = this.respuestasven;
            
-           }, 250);
+           }, 500);
         }
         else
         {
@@ -193,7 +195,7 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
      setTimeout(() => {
       this.respuestas = this.respuestasven;
      
-     }, 250);
+     }, 500);
  
     
 
@@ -210,7 +212,7 @@ this.Open = this.btnCategoryClick(`${this.nombre1}`);
       this.Closed = this.btnCategoryClick(`${this.nombre2}`);
       this.Open = this.btnCategoryClick(`${this.nombre1}`);
       this.dataSource = new MatTableDataSource(this.respuestas);
-  }, 1000);
+  }, 1500);
 
     
 

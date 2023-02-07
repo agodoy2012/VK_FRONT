@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse, TotalTrabajo, TotalVencido, vensin, fact, escfirmada, soleg } from '../interfaces/interfaces';
+import { Empresas, Historico, Dona, casosVK, PostcasosUsuariosid, PostHistCasosid, TodosIdTablas, AuthResponse, TotalTrabajo, TotalVencido, vensin, fact, escfirmada, soleg, casosVkLista, contratosLista, factura, total } from '../interfaces/interfaces';
 import { Data } from '@angular/router';
 import { async } from '@angular/core/testing';
 import { HttpHeaders } from '@angular/common/http';
@@ -19,13 +19,13 @@ export class AuthService {
   private link: string = 'https://app128.gestionadora.com:5050/api/controlvk/';
 
   CasosActuales (){
-    const url = `${ this.link }obtenerCantidadCasos/`; // para obtener cerrados abiertos total de casos 
+    const url = `${ this.link }obtenerCantidadCasosTotalesCasos/`; // para obtener cerrados abiertos total de casos 
    //const url = "https://app128.gestionadora.com:5050/api/controlvk/obtenerHistorico6MesesAutostar"; // link para grafica de casos historico 
 return    this.http.get<Empresas[]>(url);
  
   }
   CasosActualesAutos (){
-    const url = `${ this.link }obtenerCantidadCasosAutostar/`; // para obtener cerrados abiertos total de casos 
+    const url = `${ this.link }obtenerCantidadCasosTotalesAutostar/`; // para obtener cerrados abiertos total de casos 
    //const url = "https://app128.gestionadora.com:5050/api/controlvk/obtenerHistorico6MesesAutostar"; // link para grafica de casos historico 
 return    this.http.get<Empresas[]>(url);
  
@@ -86,7 +86,7 @@ return    this.http.get<Empresas[]>(url);
 
 
 
-
+ 
 
 
 ////////// peticiones para obtener el listado de usuarios con sus casos, cerrados, abiertos 
@@ -109,6 +109,61 @@ return    this.http.get<Empresas[]>(url);
  }
  
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////  peticiones para obtener el listado de usuarios con sus casos, cerrados y  abiertos con rangos de fchas 
+
+PostCasosUsuariosVK(fechini: string, fechfin: string){
+
+  const url = `${ this.link }obtenerCantidadCasosRangoCasos?fecha1=${fechini}&fecha2=${fechfin}`;
+
+  
+
+
+  console.log(url);
+  const body = {fechini, fechfin};
+
+  return    this.http.post<casosVK[]>(url,body);
+ }
+ 
+
+ PostCasosUsuariosAUTOSTAR(fechini: string, fechfin: string){
+
+  const url = `${ this.link }obtenerCantidadCasosRangoAutostar?fecha1=${fechini}&fecha2=${fechfin}`;
+
+  
+
+
+  console.log(url);
+  const body = {fechini, fechfin};
+
+  return    this.http.post<casosVK[]>(url,body);
+ }
+ 
+
+
+
+ PostCasosUsuariosCONTRATOS(fechini: string, fechfin: string){
+
+  const url = `${ this.link }obtenerCantidadCasosRangoContratos?fecha1=${fechini}&fecha2=${fechfin}`;
+
+  
+
+
+  console.log(url);
+  const body = {fechini, fechfin};
+
+  return    this.http.post<casosVK[]>(url,body);
+ }
+ 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
 
@@ -180,13 +235,12 @@ return    this.http.get<Empresas[]>(url);
 
 
 
-
 ////// peticiones para llenar estadisticas de dona enviando un id 
  CasosDonavkid(usuarios: string){
   const body = {usuarios};
 
   const url = `${ this.link }donaUsuarioCasos?usuario=${usuarios}`;
-  
+  console.log(url);
   return    this.http.post<Dona[]>(url,body);
  }
 
@@ -216,10 +270,11 @@ return    this.http.get<Empresas[]>(url);
 
 
 
+
  CasosActualesCasosid (usuarios: string){
   const body = {usuarios};
 
-  const url = `${ this.link }cantidadCasosActualesUsuariosCasos?usuario=${usuarios}`;
+  const url = `${ this.link }obtenerCantidadCasosTotalesUsuariosCasos?usuario=${usuarios}`;
  
   return    this.http.post<Empresas[]>(url,body);
 
@@ -227,15 +282,15 @@ return    this.http.get<Empresas[]>(url);
 CasosActualesAutostarid (usuarios: string){
   const body = {usuarios};
 
-  const url = `${ this.link }cantidadCasosActualesUsuariosAutostar?usuario=${usuarios}`;
+  const url = `${ this.link }obtenerCantidadCasosTotalesUsuariosAutostar?usuario=${usuarios}`;
  
   return    this.http.post<Empresas[]>(url,body);
 
 }
 CasosActualesContratosid (usuarios: string){
   const body = {usuarios};
-
-  const url = `${ this.link }cantidadCasosActualesUsuariosContratos?usuario=${usuarios}`;
+ 
+  const url = `${ this.link }controlvk/obtenerCantidadCasoTotalesUsuariosContratos?usuario=${usuarios}`;
   return    this.http.post<Empresas[]>(url,body);
 
 }
@@ -272,7 +327,7 @@ PostHistoricocasosUsuariosidUsuarioContratos(usuarios: string){
   const url = `${ this.link }historico6MesesUsuarioCasos?usuario=${usuarios}`;
 
   const body = {usuarios};
- 
+
   return    this.http.post<Historico[]>(url,body);
  }
  PostHistoricocasosUsuariosidUsuarioAutostar(usuarios: string){
@@ -461,7 +516,6 @@ PostAsignaUsuariosExcluyeContratos(usuarios: string){
 
 
 
-
 TodosLosID(usuarios: string, sisetma: string){
 
 
@@ -524,7 +578,7 @@ login(usuario:string, contrasenna: string){
 
 
 
-   /////////////////////////////// funcion para buscar cuantos estan con y sin trabajo ///////////////////////////////////////
+   ////////////////////////f/////// funcion para buscar cuantos estan con y sin trabajo ///////////////////////////////////////
 
    ContrabajoVK(){
     const url = `${ this.link }cantidadTrabajoActualCasos`;
@@ -553,12 +607,12 @@ login(usuario:string, contrasenna: string){
 
    /////////////////////////////// funcion para cunatos activos estan vencidos y cuantos estan sin vencer ////////////////////
    VencidosVK(){
-    const url = `${ this.link }vencidosCasos`;
+    const url = `${ this.link }cantidadCasosVencidosTotalCasos`;
     return    this.http.get<TotalVencido[]>(url);
 
   }
  PorvencerVK(){
-    const url = `${ this.link }porVencerCasos`;
+    const url = `${ this.link }cantidadPorVencerTotalCasos`;
     return    this.http.get<TotalVencido[]>(url);
 
   }
@@ -584,6 +638,7 @@ login(usuario:string, contrasenna: string){
   }
 
 
+
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
  
@@ -596,17 +651,17 @@ login(usuario:string, contrasenna: string){
 
 
 vensinVK(){
-  const url = `${ this.link }casosActivosEstadoCasos`;
+  const url = `${ this.link }casosActivosTotalCasos`;
   return    this.http.get<vensin[]>(url);
 
 }
 vensinAutostar(){
-  const url = `${ this.link }casosActivosEstadoAutostar`;
+  const url = `${ this.link }casosActivosTotalAutostar`;
   return    this.http.get<vensin[]>(url);
 
 }
 vensinContratos(){
-  const url = `${ this.link }casosActivosEstadoContratos`;
+  const url = `${ this.link }casosActivosTotalContratos`;
   return    this.http.get<vensin[]>(url);
 
 }
@@ -663,7 +718,7 @@ vensinpostContratos(usuario:number){
 factAutostar(fechini:string, fechfin: string){
   const url = `${ this.link }datosFacturacionAutostar?inicio=${fechini}&fin=${fechfin}`;
   const body = {fechfin,fechini};
- 
+
   return    this.http.post<fact[]>(url,body);
 }
 
@@ -677,7 +732,7 @@ factAutostar(fechini:string, fechfin: string){
 detfactAutostar(fechini:string, fechfin: string, tipo: string){
   const url = `${ this.link }datosFacturacionAutostarDetalle?inicio=${fechini}&fin=${fechfin}&tipo=${tipo}`;
   const body = {fechfin,fechini};
-  console.log(url)
+
 
   return    this.http.post<escfirmada[]>(url,body);
 }
@@ -690,6 +745,114 @@ detfactAutostarSoleg(fechini:string, fechfin: string, tipo: string){
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+////// FACTURACIONES CASOS Y CONTRATOS ///////////////
 
+//// CASOS VK ///////////////////////////
+GetcasosVkFacturacion(){
+
+  const url = `http://localhost:8007/api/contratos/vk`;
+  return    this.http.get<casosVkLista[]>(url);
+
+
+} 
+//// CONTRATOS ///////////////////////////
+GetcasosContratosFacturacion(){
+
+  const url = `http://localhost:8007/api/contratos/contratos`;
+  return    this.http.get<contratosLista[]>(url);
+
+
+} 
+//// CASOS VK ID ///////////////////////////
+GetcasosVkFacturacionId(id: string){
+
+  const url = `http://localhost:8007/api/contratos/vk/${id}`;
+  console.log(url)
+  return    this.http.get<casosVkLista[]>(url);
+
+
+} 
+
+//// CONTRATOS ID///////////////////////////
+GetcasosContratosFacturacionId(id: string){
+
+  const url = `http://localhost:8007/api/contratos/contratos/${id}`;
+  return    this.http.get<contratosLista[]>(url);
+
+
+} 
+////////////////////////////////////////
+
+/////// detalle facturacion por id  //////
+GetFacturasDetalle(id: string,tipo:string){
+
+  const url = `http://localhost:8007/api/contratos/facturas/detalle/${id}/${tipo}`;
+  return    this.http.get<factura[]>(url);
+
+
+}  
+
+/////////////////////////////////////////
+/////// detalle facturacion fecha y tipo vk=0 contratos = 1  //////
+GetFacturasDetalleFechas(fechini: string,fechfin: string,tipo:string){
+
+  const url = `http://localhost:8007/api/contratos/facturas/fecha/${fechini}/${fechfin}/${tipo}`;
+  console.log("link"+url)
+  return    this.http.get<factura[]>(url);
+
+
+}  
+
+/////////////////////////////////////////
+/////// detalle facturacion fecha y tipo vk=0 contratos = 1  //////
+GetFacturasDetalleFechasTotal(fechini: string,fechfin: string,tipo:string){
+
+  const url = `http://localhost:8007/api/contratos/facturas/fecha/total/${fechini}/${fechfin}/${tipo}`;
+  console.log("link"+url)
+  return    this.http.get<total[]>(url);
+
+
+}  
+
+/////////////////////////////////////////
+/////// tota facturacion por id  //////
+GetFacturasTotalId(id: string, tipo:string){
+
+  const url = `http://localhost:8007/api/contratos/facturas/total/detalle/${id}/${tipo}`;
+  return    this.http.get<total[]>(url);
+
+
+} 
+
+/////////////////////////////////////////
+/////// delet de facturas detalle //////
+DeletFacturasTotalId(id: string){
+
+  const url = `http://localhost:8007/api/contratos/facturacion/contratos/${id}`;
+  return    this.http.delete<total[]>(url);
+
+
+}  
+
+/////////////////////////////////////////
+ 
+
+
+////// insertar detalle facturacion ///////////////////////
+PostFacturacion(body: factura){
+
+  const url = `http://localhost:8007/api/contratos/facturas`;
+
+  
+
+
+  
+
+  return    this.http.post<factura>(url,body);
+ }
+
+/////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////
 }
  

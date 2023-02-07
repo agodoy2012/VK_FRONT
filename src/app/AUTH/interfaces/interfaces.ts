@@ -143,3 +143,31 @@ export interface AuthResponse{
     Pedido?: string,
     Total?: number
  }
+
+ export interface contratosLista{
+   ID?: number,
+   Proveedor?: string,
+   FechaVencimiento?: string,
+   Date?: string
+ }
+
+
+ export interface factura{
+   id?: number,
+   codigo?: string,
+   descripcion?: string,
+   valor?: number,
+   fecha?: string,
+   tipo?: string,
+   estado?: string
+ }
+ export interface casosVkLista{
+    CCA_NUMERO_CASO? : number,
+    CCA_FECHA_LIMITE?: string,
+    CCA_FECHA_INICIO?: string,
+    NOMBRE_CLIENTE?  : string,
+    CCA_COMENTAR?    : string
+ }
+ export interface total{
+   total?: string;
+ }

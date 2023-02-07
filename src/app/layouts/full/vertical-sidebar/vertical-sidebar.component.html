@@ -2,12 +2,12 @@
 <!-- ============================================================== -->
 <!-- sidebar -->
 <!-- ============================================================== -->
-<div class="user-profile" style="background: url(assets/images/laptop-and-mallet-on-table.jpg) no-repeat; width:auto;
-height:150px; background-size:cover;
-  background-position:center;">
+<div class="user-profile" style="background: url(assets/images/logo_vk1.jpg) no-repeat; background-size: 100% ;  object-fit: cover; background-size:cover;
+  background-position:center; height: 175px;">
   <!-- User profile image -->
-  <div class="profile-img"  fxLayout="row" fxLayout="center" >
-    <img src="assets/images/VKlogo.png" alt="user" (click)="handleNotify()" style="background-color:white"/>
+ <div class="profile-img"  fxLayout="row" fxLayout="center" >
+   <br>
+   <br>
   </div>
   <!-- User profile text-->
   <!-- ============================================================== -->
@@ -29,8 +29,8 @@ height:150px; background-size:cover;
     routerLinkActive="selected"
     group="{{ menuitem.state }}"
     (click)="scrollToTop()"
-  >
-    <a
+  > 
+    <a 
       class=""
       appAccordionToggle
       [routerLink]="['/', menuitem.state]"

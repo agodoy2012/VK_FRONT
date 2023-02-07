@@ -14,6 +14,10 @@ import { EditorComponent } from './editor/editor.component';
 import { FormValidationComponent } from './form-validation/form-validation.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
+import { FbuscarComponent } from './form-validation/fbuscar/fbuscar.component';
+import { VkheadComponent } from './form-validation/vkhead/vkhead.component';
+import { ContratosHeadComponent } from './form-validation/contratos-head/contratos-head.component';
+import { ContratosFechasComponent } from './form-validation/contratos-fechas/contratos-fechas.component';
 
 export const FormRoutes: Routes = [
   {
@@ -100,8 +104,40 @@ export const FormRoutes: Routes = [
         },
       },
       {
-        path: 'form-validation',
+        path: 'form-validation/factura/:tipo/:id',
         component: FormValidationComponent,
+        data: {
+          title: 'Form Validation',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Form Validation' }],
+        },
+      },
+      {
+        path: 'form-validation/fechas/:id',
+        component: ContratosFechasComponent,
+        data: {
+          title: 'Form Validation',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Form Validation' }],
+        },
+      },
+      {
+        path: 'form-validation/fbuscar/:id',
+        component: FbuscarComponent,
+        data: {
+          title: 'Form Validation',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Form Validation' }],
+        },
+      },
+      {
+        path: 'form-validation/vk/:id',
+        component: VkheadComponent,
+        data: {
+          title: 'Form Validation',
+          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Form Validation' }],
+        },
+      },
+      {
+        path: 'form-validation/contratos/:id',
+        component: ContratosHeadComponent,
         data: {
           title: 'Form Validation',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Form Validation' }],

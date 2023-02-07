@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/AUTH/services/auth.service';
 @Component({
   selector: 'app-full-layout',
   templateUrl: 'full.component.html',
-  styleUrls: [],
+  styleUrls: [],  
 })
 export class FullComponent implements OnInit {
   mobileQuery: MediaQueryList;
@@ -21,7 +21,7 @@ export class FullComponent implements OnInit {
   boxed = false;
   horizontal = false;
 
-  green = false;
+  green = false; 
   blue = false;
   danger = false;
   showHide = false;
@@ -57,7 +57,7 @@ export class FullComponent implements OnInit {
   ngOnInit(): void {
 
 
-  }
+  } 
 
 
   clickEvent(): void {
@@ -67,6 +67,7 @@ export class FullComponent implements OnInit {
   darkClick() {
     // const body = document.getElementsByTagName('body')[0];
     // this.dark = this.dark;
+    debugger;
     const body = document.getElementsByTagName('body')[0];
     body.classList.toggle('dark');
     // if (this.dark)

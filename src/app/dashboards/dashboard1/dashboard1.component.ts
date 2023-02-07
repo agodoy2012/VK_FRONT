@@ -92,8 +92,11 @@ setTimeout(() => {
 
     Swal.fire(
       { 
+       
         position: 'bottom-end',
-        icon: 'success',
+        icon: 'error',
+        iconColor: 'red',
+       
         title: `Verificar casos activos vencidos en: ${this.vencido}--${this.vencidoauto}--${this.vencidocontra}`,
         showConfirmButton: false,
         timer: 2300

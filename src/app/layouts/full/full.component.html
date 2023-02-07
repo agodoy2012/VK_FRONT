@@ -13,7 +13,7 @@
     green: green,
     horizontal: horizontal
   }"
->
+> 
   <!-- ============================================================== -->
   <!-- Topbar - style you can find in header.scss -->
   <!-- ============================================================== -->
@@ -37,7 +37,7 @@
           <span fxShow="false" fxShow.gt-xs>
             <!-- dark Logo text -->
             <img src="assets/images/VKLargo1.png" alt="homepage" class="dark-logo" width="200" />
-            <!-- Light Logo text -->
+          
             <img src="assets/images/VKLargo1.png" class="light-logo" alt="homepage"  width="200" />
           </span>
         </a>
@@ -52,7 +52,7 @@
       </button>
     -->
       <span class="spacer"></span>
-      <button mat-button  (click)="logout()" style="background-color:black">
+      <button mat-button  (click)="logout()" style="color:black">
           Logout
       </button> 
       <!-- ============================================================== -->
@@ -125,7 +125,7 @@
           <router-outlet>
             <app-spinner></app-spinner>
           </router-outlet>
-        </div>
+        </div> 
       </div>
       
     </mat-sidenav-content>
@@ -133,4 +133,4 @@
     <!-- Page container - style you can find in pages.scss -->
     <!-- ============================================================== -->
   </mat-sidenav-container>
-</div>
+</div> 

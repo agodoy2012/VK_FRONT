@@ -22,8 +22,9 @@ import { AuthService } from 'src/app/AUTH/services/auth.service';
 import { Dona } from 'src/app/AUTH/interfaces/interfaces';
 import { colorSets } from '@swimlane/ngx-charts';
 import { ChartOptions } from '../sales-overview/sales-overview.component';
-import { async } from '@angular/core/testing';
+import { async, tick } from '@angular/core/testing';
 import { Data } from '@angular/router';
+import { style } from '@angular/animations';
 
 export interface VisitorChartOptions {
   series: ApexNonAxisChartSeries;
@@ -104,6 +105,7 @@ export class VisitorComponent implements OnInit  {
         fontFamily: 'Poppins,sans-serif',
         height: 253,  
         
+        
       },
  
       plotOptions: {
@@ -142,9 +144,11 @@ export class VisitorComponent implements OnInit  {
           return label + " - " + opts.w.globals.series[opts.seriesIndex]
       },
         labels:{
-          colors: 'white'
-          
+         
+          colors: 'white',
+        
         },
+       
         
       },
     

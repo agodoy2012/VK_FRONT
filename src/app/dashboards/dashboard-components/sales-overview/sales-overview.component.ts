@@ -20,6 +20,7 @@ import { Data } from '@angular/router';
 import { timeout } from 'rxjs/operators';
 import { XAxisComponent } from '@swimlane/ngx-charts';
 import { label } from '../../../apps/mailbox/listing/categories';
+import { style } from '@angular/animations';
 
 export interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -62,7 +63,7 @@ export interface ChartOptions {
     if(emp)
     {
 
-/// se hace una pausa para poder llenar las variables y teners todos los id si esta en usuarios
+/// se hace una remo para poder llenar las variables y teners todos los id si esta en usuarios
       setTimeout(() => {
         this.idvk = localStorage.getItem('idvk')!;
         this.idautostar = localStorage.getItem('idautostar')!;
@@ -143,11 +144,19 @@ export interface ChartOptions {
       },
       xaxis: {
         categories: [this.mes1,this.mes2, this.mes3, this.mes4, this.mes5, this.mes6],
+        labels: {
+          style:{ fontSize: "10", colors:'black'},
+        }
         
       },
 
       legend: {
         show: false,
+        labels:{
+         
+          colors: 'black',
+        
+        },
       },
       fill: {
         colors: ['#1e88e5', '#26c6da', '#ffffff'],
@@ -159,7 +168,7 @@ export interface ChartOptions {
     };
   }
   getElementAtEvent(evt: any) {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'); 
   }
 
   mes1 = "";
